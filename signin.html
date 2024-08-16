@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .login-container {
+            background-color: royalblue;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h2 {
+            margin: 0 0 20px 0;
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .login-container .mandatory {
+            color: red;
+        }
+        .login-container input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .login-container input:focus {
+            background-color: #e0e0e0;
+            transform: scale(1.02);
+            outline: none;
+        }
+        .login-container input[type="text"], .login-container input[type="password"] {
+            background-color: #fff;
+            color: #333;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: white;
+            color: royalblue;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .login-container button:hover {
+            background-color: lightgray;
+        }
+        .login-container a {
+            color: blue;
+            text-decoration: none;
+            margin: 0 5px;
+            display: inline-block;
+            transition: text-decoration 0.3s ease;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+        .links-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .error-message {
+            display: none;
+            background-color: lightgoldenrodyellow;
+            color: black;
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <div class="error-message" id="error-message">Please fill all fields correctly. All fields are mandatory.</div>
+        <label for="mobile">Mobile <span class="mandatory">*</span></label>
+        <input type="text" id="mobile" placeholder="Enter your mobile number">
+        
+        <label for="password">Password <span class="mandatory">*</span></label>
+        <input type="password" id="password" placeholder="Enter your password">
+        
+        <button onclick="validateForm()">Login</button>
+        
+        <div class="links-container">
+            <a href="#">Forgot Password?</a> | 
+            <a href="#">Signup</a> | 
+            <a href="#">Continue as Guest</a>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var mobile = document.getElementById('mobile').value.trim();
+            var password = document.getElementById('password').value.trim();
+            var errorMessage = document.getElementById('error-message');
+            var mobilePattern = /^[0-9]+$/; // Regex for numerical only
+            var passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/; // Regex for alphanumeric and special characters
+            
+            if (mobile === '' || password === '') {
+                errorMessage.textContent = 'Please fill all fields. All fields are mandatory.';
+                errorMessage.style.display = 'block';
+            } else if (!mobilePattern.test(mobile)) {
+                errorMessage.textContent = 'Mobile number must be numerical only.';
+                errorMessage.style.display = 'block';
+            } else if (!passwordPattern.test(password)) {
+                errorMessage.textContent = 'Password must be at least 8 characters long and include letters, numbers, and special characters.';
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+                // Proceed with form submission or other actions
+                alert('Form Submitted!');
+            }
+        }
+    </script>
+</body>
+</html>

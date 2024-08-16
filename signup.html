@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .form-wrapper {
+            max-width: 600px; /* Decreased width */
+            margin: auto;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in;
+        }
+        .form-wrapper h1 {
+            text-align: center;
+            color: black;
+        }
+        .form-field {
+            margin-bottom: 15px;
+        }
+        .form-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-field input,
+        .form-field select {
+            width: calc(100% - 16px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        .form-field input[type="button"] {
+            padding: 5px 10px;
+            font-size: 0.9em;
+        }
+        .form-field input[type="checkbox"] {
+            width: auto;
+        }
+        .form-field .verify-btn {
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-field .submit-btn {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .form-field .submit-btn:hover {
+            background-color: #003d7a;
+        }
+        .form-field .textarea {
+            resize: none;
+            height: 80px;
+        }
+        .form-field .checkbox-text {
+            display: inline;
+        }
+        .flex-fields {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .flex-fields input[type="text"] {
+            flex: 1;
+            height: 35px; /* Decreased height */
+        }
+        .error-alert {
+            color: red;
+            display: none;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @media (max-width: 600px) {
+            .form-wrapper {
+                padding: 15px;
+            }
+            .flex-fields {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .flex-fields input[type="text"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-wrapper">
+        <h1>REGISTRATION FORM</h1>
+        <div class="error-alert" id="error-alert">Please complete all required fields.</div>
+        <form id="user-registration-form">
+            <div class="form-field">
+                <label for="user-first-name">FIRST NAME *</label>
+                <input type="text" id="user-first-name" name="user-first-name" required>
+            </div>
+
+            <div class="form-field">
+                <label for="user-last-name">LAST NAME *</label>
+                <input type="text" id="user-last-name" name="user-last-name" required>
+            </div>
+
+            <div class="form-field">
+                <label for="user-gender">GENDER *</label>
+                <select id="user-gender" name="user-gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="user-email">EMAIL *</label>
+                <div class="flex-fields">
+                    <input type="email" id="user-email" name="user-email" required>
+                    <input type="button" class="verify-btn" value="Verify">
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label for="user-mobile">MOBILE NUMBER *</label>
+                <div class="flex-fields">
+                    <input type="tel" id="user-mobile" name="user-mobile" required>
+                    <input type="button" class="verify-btn" value="Verify">
+                </div>
+            </div>
+
+            <div class="form-field">
+                <label for="user-password">PASSWORD *</label>
+                <input type="password" id="user-password" name="user-password" required>
+            </div>
+
+            <div class="form-field">
+                <label for="user-confirm-password">CONFIRM PASSWORD *</label>
+                <input type="password" id="user-confirm-password" name="user-confirm-password" required>
+            </div>
+
+            <div class="form-field">
+                <label for="user-wallet">DO YOU REQUIRE WALLET SYSTEM *</label>
+                <select id="user-wallet" name="user-wallet" required>
+                    <option value="">Select</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div class="form-field">
+                <label for="user-captcha">CAPTCHA *</label>
+                <input type="text" id="user-captcha" name="user-captcha" required>
+            </div>
+
+            <div class="form-field">
+                <input type="checkbox" id="user-privacy-policy" name="user-privacy-policy" required>
+                <label for="user-privacy-policy" class="checkbox-text">I AGREE TO WTiCabs PRIVACY POLICY AND TERMS OF SERVICE.</label>
+            </div>
+
+            <div class="form-field">
+                <input type="submit" value="REGISTER" class="submit-btn">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('user-registration-form').addEventListener('submit', function(event) {
+            const form = event.target;
+            const errorAlert = document.getElementById('error-alert');
+            if (!form.checkValidity()) {
+                errorAlert.style.display = 'block';
+                event.preventDefault(); // Prevent form submission
+            } else {
+                errorAlert.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WTicabs</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </style>
+</head>
+
+<body>
+    <div class="container_1">
+        <div class="navbar">
+            <div class="left">
+                <img src="logo.png" alt="WTicabs Logo" class="logo">
+                <div class="button-container">
+                    <button class="button" onclick="window.location.href='http://127.0.0.1:5500/index.html'">Book
+                        Cab</button>
+                    <button class="button"
+                        onclick="window.location.href='https://www.wticabs.com/workplace-commute'">WTicabs
+                        Corporate</button>
+                    <button class="button" onclick="window.location.href='https://www.wticabs.com/contact-us'">Contact
+                        Us</button>
+                </div>
+            </div>
+            <div class="right">
+                <div class="custom-dropdown">
+                    <button class="dropdown-button">WTiCabs International</button>
+                    <div class="dropdown-content">
+
+                        <div class="dropdown-item" data-value="ind">
+                            <img src="./JPEG/india_flag.JPEG" alt="IND" class="dropdown-image">
+                            <span class="dropdown-text">IND</span>
+                        </div>
+                        <div class="dropdown-item" data-value="uae">
+                            <img src="./JPEG/UAE.JPEG" alt="UAE" class="dropdown-image">
+                            <span class="dropdown-text">UAE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const button = document.querySelector('.dropdown-button');
+                        const content = document.querySelector('.dropdown-content');
+
+                        button.addEventListener('click', function () {
+                            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                        });
+
+                        document.querySelectorAll('.dropdown-item').forEach(item => {
+                            item.addEventListener('click', function () {
+                                button.textContent = this.querySelector('.dropdown-text').textContent;
+                                content.style.display = 'none';
+                            });
+                        });
+
+                        // Close dropdown if click outside
+                        window.addEventListener('click', function (event) {
+                            if (!event.target.matches('.dropdown-button')) {
+                                if (content.style.display === 'block') {
+                                    content.style.display = 'none';
+                                }
+                            }
+                        });
+                    });
+                </script>
+                <a href="http://127.0.0.1:5500/signup.html"><img src="./jpeg/signup.jpeg" alt="Sign Up"
+                        class="nav-icon"></a>
+                <a href="http://127.0.0.1:5500/signin.html"><img src="./jpeg/signin.jpeg" alt="Sign In"
+                        class="nav-icon"></a>
+            </div>
+        </div></br></br></br></br>
+
+        <div class="container_2">
+            <div class="button-container">
+                <button class="button"
+                    onclick="window.location.href='http://127.0.0.1:5500/airport.html'">Airport</button>
+                <button class="button"
+                    onclick="window.location.href='http://127.0.0.1:5500/airport.html'">Railway</button>
+                <button class="button"
+                    onclick="window.location.href='http://127.0.0.1:5500/airport.html'">Outstation</button>
+            </div>
+
+            <div class="radio-container">
+                <input type="radio" id="airport_pickup" name="airport" value="pickup">
+                <label for="airport_pickup">Airport Pickup</label>
+                <input type="radio" id="airport_drop" name="airport" value="drop">
+                <label for="airport_drop">Airport Drop</label>
+            </div>
+
+            <div class="select-container">
+                <select>
+                    <option>Select City</option>
+                    <option>Delhi</option>
+                    <option>Bangalore</option>
+                    <option>Noida</option>
+                    <option>Pune</option>
+                    <option>Chennai</option>
+                    <option>Kolkata</option>
+                    <option>Hyderabad</option>
+                    <option>Ayodhya</option>
+                    <option>Srinagar</option>
+                    <option>Ahmadabad</option>
+                    <option>Amrithsar</option>
+                    <option>Chandigargh</option>
+                    <option>Dharamshala</option>
+                    <option>Guwahati</option>
+                    <option>Indore</option>
+                    <option>Jabalpur</option>
+                    <option>Jaipur</option>
+                    <option>Lucknow</option>
+                    <option>Mumbai</option>
+                    <option>Nagpur</option>
+                    <option>Patna</option>
+                    <option>Raipur</option>
+                    <option>Ranchi</option>
+                    <option>Varanasi</option>
+                    <option>Vizag</option>
+
+                </select>
+                <select>
+                    <option>Select Terminal</option>
+                    <option>Terminal 1 </option>
+                    <option>Terminal 2</option>
+                    <option>Terminal 3</option>
+                    <option>Terminal 4</option>
+                    <option>Terminal 5</option>
+                </select>
+            </div>
+
+            <div class="input-container">
+                <input type="text" placeholder="Drop Location" id="textbox">
+                <i class="fas fa-map-marker-alt" onclick="openGoogleMaps()"></i>
+            </div>
+
+            <div class="date-time-container">
+                <input type="date" value="2024-07-20">
+                <input type="time" value="15:00">
+            </div>
+
+            <button class="button search-button">Search</button>
+
+            <div class="marquee-container">
+                <marquee>Double refund if your vehicle is over 30 minutes late ** | Rate applicable only for online
+                    booking,
+                    offline rate may vary according to the outlet location.</marquee>
+            </div>
+        </div>
+
+        <script>
+            function openGoogleMaps() {
+                var latitude = 37.7749; // Replace with your latitude
+                var longitude = -122.4194; // Replace with your longitude
+                var url = `https://www.google.com/maps?q=${latitude},${longitude}`;
+                window.open(url, '_blank');
+            }
+        </script>
+
+        <div class="container_3">
+            <div class="labels">
+                <label>Best Cab Services for Airport, Railway Station, and Outstation | WTicabs</label><br><br>
+            </div>
+            <label class="label2">Book Airport Cabs<br>Starting from Rs. 299/-</label>
+
+            <img src="google_play.png" alt="Google Play" class="store-icon">
+            <img src="app_store.png" alt="App Store" class="store-icon">
+        </div>
+        <div class="aboutus_Container">
+            <div class="aboutus_Container_content">
+                <div class="text">
+                    <h2>About Us</h2>
+                    <p>
+                        Whether you need a ride to the airport, railway station pick & drop, outstation travel, a
+                        comfortable commute to work, or a reliable transportation solution for your clients, WTicabs has
+                        got you covered. Our well-maintained fleet of vehicles and professional drivers guarantee your
+                        safety and comfort throughout your journey. With round-the-clock availability, you can rely on
+                        us at any time, day or night.
+                    </p>
+                    <p>
+                        Experience top-notch cab services with WTicabs now.
+                    </p>
+                </div>
+                <div class="image">
+                    <img src="./jpeg/About_us.jpeg" alt="WTicabs">
+                </div>
+            </div>
+        </div>
+
+        <div id="container_6">
+            <h2>Affordable & On Time Cabs</h2>
+            <div class="services-container">
+                <div id="container_6A" class="service-container">
+                    <img src="./JPEG/airport_cabs_services.jpeg" alt="Airport Cab Services" class="service-image">
+                    <h3>Airport Cab Services</h3>
+                    <p class="collapsed">WTicabs airport taxi service is<br>designed to provide hassle-free<br>transfers
+                        to and from the airport.<br></p>
+                    <div id="readMore1" class="read-more">
+                        <p>Whether you need an airport pickup<br>or drop-off, our professional drivers<br>will be there
+                            to assist you. With our<br>dedication to customer satisfaction,<br>we strive to deliver
+                            exceptional<br>service, ensuring that you reach your<br>destination safely and on time.<br>
+                        </p>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleReadMore('readMore1', this)">Read More</button>
+                    <button class="read-less-btn" onclick="toggleReadLess('readMore1', this)">Read Less</button>
+                </div>
+                <div id="container_6B" class="service-container">
+                    <img src="./JPEG/Railway_Station_cabs_services.jpeg" alt="Railway Station Cab Services"
+                        class="service-image">
+                    <h3>Railway Station Cab Services</h3>
+                    <p class="collapsed">WTicabs provides swift<br>and dependable railway station cab<br>services. Our
+                        experienced drivers<br></p>
+                    <div id="readMore2" class="read-more">
+                        <p>Ensure a safe and comfortable<br>journey. With our streamlined booking<br>and top-notch
+                            vehicles, we make your<br>railway station travels stress-free and<br>convenient. Choose
+                            WTiCabs for a<br>seamless transit experience<br></p>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleReadMore('readMore2', this)">Read More</button>
+                    <button class="read-less-btn" onclick="toggleReadLess('readMore2', this)">Read Less</button>
+                </div>
+                <div id="container_6C" class="service-container">
+                    <img src="./JPEG/Outstation_Cabs_services.jpeg" alt="Outstation Cab Services" class="service-image">
+                    <h3>Outstation Cab Services</h3>
+                    <p class="collapsed">Whether you're planning a weekend<br>getaway, a business trip, or a
+                        family<br>vacation, our reliable and comfortable<br></p>
+                    <div id="readMore3" class="read-more">
+                        <p>Cab service is here to ensure a smooth<br>and enjoyable journey. Our fleet
+                            of<br>well-maintained vehicles, driven by<br>professional and experienced drivers,<br>will
+                            take you to your destination safely<br>and efficiently.<br></p>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleReadMore('readMore3', this)">Read More</button>
+                    <button class="read-less-btn" onclick="toggleReadLess('readMore3', this)">Read Less</button>
+                </div>
+                <div id="container_6D" class="service-container">
+                    <img src="./JPEG/workplace_commute-_Services.jpeg" alt="Workplace Commute Services"
+                        class="service-image">
+                    <h3>Workplace Commute Services</h3>
+                    <p class="collapsed">Rethinking commuting for unmatched<br>employee experience & a smarter,<br>more
+                        sustainable workplace? If yes,<br></p>
+                    <div id="readMore4" class="read-more">
+                        <p>Then go for WTicabs. We provide well<br>-managed and structured commute<br>facilities to
+                            enhance the productivity<br>of employees. Our hassle-free, best<br>workplace commute service
+                            is<br>committed to exceeding our<br>customers' expectations for the<br>service and overall
+                            value proposition<br>in people transportation.<br></p>
+                    </div>
+                    <button class="read-more-btn" onclick="toggleReadMore('readMore4', this)">Read More</button>
+                    <button class="read-less-btn" onclick="toggleReadLess('readMore4', this)">Read Less</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function toggleReadMore(id, button) {
+                const readMoreDiv = document.getElementById(id);
+                const paragraph = button.parentElement.querySelector('p');
+                readMoreDiv.classList.add('expanded');
+                paragraph.classList.add('collapsed');
+                button.style.display = 'none';
+                button.nextElementSibling.style.display = 'block'; // Show "Read Less" button
+            }
+
+            function toggleReadLess(id, button) {
+                const readMoreDiv = document.getElementById(id);
+                const paragraph = button.parentElement.querySelector('p');
+                readMoreDiv.classList.remove('expanded');
+                paragraph.classList.remove('collapsed');
+                button.style.display = 'none';
+                button.previousElementSibling.style.display = 'block'; // Show "Read More" button
+            }
+        </script>
+    </div>
+    <div id="chatbot-icon" onclick="toggleForm()">💬</div>
+
+    <div id="chatbot-form">
+        <h1>GET IN TOUCH</h1>
+        <form>
+            <label for="full-name">Full Name:</label>
+            <input type="text" id="full-name" name="full-name" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="mobile-number">Mobile Number:</label>
+            <input type="text" id="mobile-number" name="mobile-number" required><br>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea><br>
+
+            <label for="captcha">Captcha:</label>
+            <input type="text" id="captcha" name="captcha" required placeholder="Enter captcha here">
+            <button type="button" id="refresh-captcha">♻️ Refresh Captcha</button><br>
+
+            <button type="submit" id="submit-button">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleForm() {
+            var form = document.getElementById('chatbot-form');
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+
+        document.getElementById('refresh-captcha').onclick = function () {
+            // Placeholder functionality: Show an alert for now
+            alert('Captcha refresh button clicked. No real captcha functionality is implemented.');
+        };
+    </script>
+    </br></br>
+
+    <div id="carousel-container">
+        <h1>Why Choose Us</h1>
+        <div id="carousel-content">
+            <div id="carousel-wrapper">
+                <div class="carousel-wrapper">
+                    <div class="carousel-images-wrapper">
+                        <!-- Carousel Items -->
+                        <div class="carousel-slide">
+                            <img src="./jpeg/01.jpeg" alt="Image 1" class="carousel-image">
+                            <h3>Wide Range of Vehicle Options</h3>
+                            <p class="additional-text">
+                                Our diverse fleet caters to varied transportation needs, featuring sedans, SUVs, Luxury
+                                Vehicles, Vans, and Specialty options. Vehicles come in different seating capacities,
+                                accommodating solo travelers to large groups for various occasions.
+                            </p>
+                            <button class="show-more">Read More</button>
+                            <button class="show-less" style="display: none;">Read Less</button>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="./jpeg/02.jpeg" alt="Image 2" class="carousel-image">
+                            <h3>Experienced Drivers</h3>
+                            <p class="additional-text">
+                                Our drivers are highly trained, professional, and courteous, ensuring a safe and
+                                comfortable journey for all passengers.
+                            </p>
+                            <button class="show-more">Read More</button>
+                            <button class="show-less" style="display: none;">Read Less</button>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="./jpeg/03.jpeg" alt="Image 3" class="carousel-image">
+                            <h3>Competitive Pricing</h3>
+                            <p class="additional-text">
+                                We offer competitive pricing without compromising on the quality of our services, making
+                                us an affordable choice for all.
+                            </p>
+                            <button class="show-more">Read More</button>
+                            <button class="show-less" style="display: none;">Read Less</button>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="./jpeg/04.jpeg" alt="Image 4" class="carousel-image">
+                            <h3>24/7 Customer Support</h3>
+                            <p class="additional-text">
+                                Our customer support team is available around the clock to assist with any inquiries or
+                                issues you may have.
+                            </p>
+                            <button class="show-more">Read More</button>
+                            <button class="show-less" style="display: none;">Read Less</button>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="./jpeg/05.jpeg" alt="Image 5" class="carousel-image">
+                            <h3>Easy Booking Process</h3>
+                            <p class="additional-text">
+                                Our user-friendly booking process allows you to easily reserve your vehicle online or
+                                through our mobile app.
+                            </p>
+                            <button class="show-more">Read More</button>
+                            <button class="show-less" style="display: none;">Read Less</button>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="./jpeg/06.jpeg" alt="Image 6" class="carousel-image">
+                            <h3>Modern Fleet</h3>
+                            <p class="additional-text">
+                                Our fleet consists of modern, well-maintained vehicles to ensure a smooth and reliable
+                                journey every time.
+                            </p>
+                            <button class="show-more">Read More</button>
+                            <button class="show-less" style="display: none;">Read Less</button>
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="./jpeg/07.jpeg" alt="Image 7" class="carousel-image">
+                            <h3>Safety First</h3>
+                            <p class="additional-text">
+                                Safety is our top priority, and we adhere to strict safety standards and protocols for
+                                all our vehicles and services.
+                            </p>
+                            <button class="show-more">Read More</button>
+                            <button class="show-less" style="display: none;">Read Less</button>
+                        </div>
+                    </div>
+                    <button class="carousel-prev" onclick="prevSlide()">&#10094;</button>
+                    <button class="carousel-next" onclick="nextSlide()">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const index1 = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            if (n >= totalSlides) index1 = 0;
+            if (n < 0) index1 = totalSlides - 1;
+
+            const offset = -index1 * (100 / 4);
+            document.querySelector('.carousel-images-wrapper').style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            index1++;
+            showSlide(index1);
+        }
+
+        function prevSlide() {
+            index--;
+            showSlide(index1);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(index1);
+
+            const showMoreButtons = document.querySelectorAll('.show-more');
+            const showLessButtons = document.querySelectorAll('.show-less');
+            const additionalTexts = document.querySelectorAll('.additional-text');
+
+            showMoreButtons.forEach((button, i) => {
+                button.addEventListener('click', () => {
+                    additionalTexts[i].style.display = 'block';
+                    button.style.display = 'none';
+                    showLessButtons[i].style.display = 'inline';
+                });
+            });
+
+            showLessButtons.forEach((button, i) => {
+                button.addEventListener('click', () => {
+                    additionalTexts[i].style.display = 'none';
+                    button.style.display = 'none';
+                    showMoreButtons[i].style.display = 'inline';
+                });
+            });
+        });
+    </script></br></br>
+    <a href="index.html" class="book-now-button">BOOK NOW</a>
+    </br></br>
+
+
+    <div class="explore-carousel-container" id="explore_car_rentals_in">
+        <h1>Explore Car Rentals in</h1>
+        <div class="explore-carousel-wrapper">
+            <div class="explore-carousel-item">
+                <img src="./jpeg/delhi.jpeg" alt="Delhi NCR">
+                <h2>Delhi NCR</h2>
+            </div>
+            <div class="explore-carousel-item">
+                <img src="./jpeg/Mumbai.jpeg" alt="Mumbai">
+                <h2>Mumbai</h2>
+            </div>
+            <div class="explore-carousel-item">
+                <img src="./jpeg/Pune.jpeg" alt="Pune">
+                <h2>Pune</h2>
+            </div>
+            <div class="explore-carousel-item">
+                <img src="./jpeg/Hyderabad.jpeg" alt="Hyderabad">
+                <h2>Hyderabad</h2>
+            </div>
+            <div class="explore-carousel-item">
+                <img src="./jpeg/Bangalore.jpeg" alt="Bangalore">
+                <h2>Bangalore</h2>
+            </div>
+            <div class="explore-carousel-item">
+                <img src="./jpeg/Chennai.jpeg" alt="Chennai">
+                <h2>Chennai</h2>
+            </div>
+            <div class="explore-carousel-item">
+                <img src="./jpeg/chandigarh.jpeg" alt="Chandigarh">
+                <h2>Chandigarh</h2>
+            </div>
+            <div class="explore-carousel-item">
+                <img src="./jpeg/Ahmedabad.jpeg" alt="Ahmedabad">
+                <h2>Ahmedabad</h2>
+            </div>
+            <div class="explore-carousel-item">
+                <img src="./jpeg/Guwahati.jpeg" alt="Guwahati">
+                <h2>Guwahati</h2>
+            </div>
+            <div class="explore-carousel-item">
+                <img src="./jpeg/jaipur.jpeg" alt="Jaipur">
+                <h2>Jaipur</h2>
+            </div>
+            <div class="explore-carousel-item">
+                <img src="./jpeg/Kolkata.jpeg" alt="Kolkata">
+                <h2>Kolkata</h2>
+            </div>
+        </div>
+        <button class="explore-carousel-button explore-prev" onclick="moveSlide(-1)">&#60;</button>
+        <button class="explore-carousel-button explore-next" onclick="moveSlide(1)">&#62;</button>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+
+        function moveSlide(direction) {
+            const carouselWrapper = document.querySelector('.explore-carousel-wrapper');
+            const totalItems = document.querySelectorAll('.explore-carousel-item').length;
+            const visibleItems = 5;
+
+            currentIndex += direction;
+
+            if (currentIndex < 0) {
+                currentIndex = totalItems - visibleItems;
+            } else if (currentIndex >= totalItems - visibleItems + 1) {
+                currentIndex = 0;
+            }
+
+            carouselWrapper.style.transform = `translateX(-${currentIndex * 20}%)`;
+        }
+
+        setInterval(() => {
+            moveSlide(1);
+        }, 3000);
+    </script>
+    </br></br>
+
+    <div class="customer-support-container">
+        <div class="customer-support-item">
+            <img src="./png/247_Customer_Support.png" alt="24/7 Customer Support" class="customer-support-icon">
+            <div class="customer-support-text">
+                <h2>24/7 Customer Support</h2>
+                <p>A dedicated 24x7 customer support team always at your service to help solve any problem.</p>
+            </div>
+        </div>
+        <div class="customer-support-item">
+            <img src="./png/Safety_first.png" alt="Safety First" class="customer-support-icon">
+            <div class="customer-support-text">
+                <h2>Safety First</h2>
+                <p>Keep your loved ones informed about your travel routes or call emergency services when in need.</p>
+            </div>
+        </div>
+        <div class="customer-support-item">
+            <img src="./png/top_rates_driver.png" alt="Top Rated Driver" class="customer-support-icon">
+            <div class="customer-support-text">
+                <h2>Top Rated Driver-Partners</h2>
+                <p>All our driver-partners are background verified and trained to deliver only the best experience.</p>
+            </div>
+        </div>
+    </div>
+    </br></br>
+
+
+    <div class="Customer_fivestars-container-carousel">
+        <div class="Customer_fivestars-carousel">
+            <div class="Customer_fivestars-carousel-slide">
+                <!-- Repeat this block for each review -->
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_1.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Emily Clark</div>
+                    <div class="Customer_fivestars-grade yellow-star">★★★★★</div>
+                    <div class="Customer_fivestars-review">Fantastic service, very happy! 😊</div>
+                </div>
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_2.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Michael Lee</div>
+                    <div class="Customer_fivestars-grade gray-star">★★★★☆</div>
+                    <div class="Customer_fivestars-review">Good service, but could improve. 🙂</div>
+                </div>
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_3.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Sarah Jones</div>
+                    <div class="Customer_fivestars-grade gray-star">★★★☆☆</div>
+                    <div class="Customer_fivestars-review">Average experience. 😐</div>
+                </div>
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_1.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Emily Clark</div>
+                    <div class="Customer_fivestars-grade yellow-star">★★★★★</div>
+                    <div class="Customer_fivestars-review">Fantastic service, very happy! 😊</div>
+                </div>
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_2.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Michael Lee</div>
+                    <div class="Customer_fivestars-grade gray-star">★★★★☆</div>
+                    <div class="Customer_fivestars-review">Good service, but could improve. 🙂</div>
+                </div>
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_3.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Sarah Jones</div>
+                    <div class="Customer_fivestars-grade gray-star">★★★☆☆</div>
+                    <div class="Customer_fivestars-review">Average experience. 😐</div>
+                </div>
+
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_4.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">David Smith</div>
+                    <div class="Customer_fivestars-grade red-star">★☆☆☆☆</div>
+                    <div class="Customer_fivestars-review">Not satisfied with the service. 😟</div>
+                </div>
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_5.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Laura Wilson</div>
+                    <div class="Customer_fivestars-grade yellow-star">★★★★★</div>
+                    <div class="Customer_fivestars-review">Excellent service, will use again! 😃</div>
+                </div>
+                <!-- Add more Customer_fivestars items as needed -->
+            </div>
+            <button class="Customer_fivestars-carousel-button Customer_fivestars-prev">&lt;</button>
+            <button class="Customer_fivestars-carousel-button Customer_fivestars-next">&gt;</button>
+        </div>
+    </div>
+
+    <script>
+        const prevButton = document.querySelector('.Customer_fivestars-prev');
+        const nextButton = document.querySelector('.Customer_fivestars-next');
+        const slide = document.querySelector('.Customer_fivestars-carousel-slide');
+        let index = 0;
+
+        function showNextSlide() {
+            index++;
+            if (index >= slide.children.length - 2) { // Adjusted for 3 items view
+                index = 0;
+            }
+            updateSlidePosition();
+        }
+
+        function showPrevSlide() {
+            index--;
+            if (index < 0) {
+                index = slide.children.length - 3; // Adjusted for 3 items view
+            }
+            updateSlidePosition();
+        }
+
+        function updateSlidePosition() {
+            const width = slide.children[0].getBoundingClientRect().width;
+            slide.style.transform = `translateX(-${index * (width + 20)}px)`; // Adjusted for 20px margin
+        }
+
+        prevButton.addEventListener('click', showPrevSlide);
+        nextButton.addEventListener('click', showNextSlide);
+
+        setInterval(showNextSlide, 5000); // Change slide every 5 seconds
+    </script>
+    </br></br>
+
+    
+    <div class="download_App_Container">
+        <a href="https://play.google.com/store/apps/details?id=com.wti.cabbooking" alt="Google Play" class="store-icon">DOWNLOAD APP</a>
+    </div>
+</br></br>
+
+<div class="workplace_Commute">
+    <div>
+        <h1>WORKPLACE COMMUTE</h1>
+        <h2>Need wheels for employees?</h2>
+        <p>Enjoy business rentals, employee transportation service,<br>
+           and other office commute services as a business user. Kick<br>
+           back, relax, and ride.</p>
+        <button class="learnMoreButton">
+            Learn More <span>&#x27A4;</span>
+        </button>
+    </div>
+    <div>
+        <img src="./jpeg/WORKPLACE COMMUTE.jpeg" alt="Workplace Commute" class="responsiveImage">
+    </div>
+</div>
+</br></br>
+
+<div class="download_App_Container">
+    <a href="https://play.google.com/store/apps/details?id=com.wti.cabbooking" alt="Google Play" class="store-icon">DOWNLOAD APP</a>
+</div>
+</br></br>
+</body>
+
+</html>

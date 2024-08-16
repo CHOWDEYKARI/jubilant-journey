@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Choose Us Carousel</title>
+    <style>
+        /* Main Container */
+        #blogCarouselContainer {
+            width: 90%;
+            margin: auto;
+            box-sizing: border-box;
+            background-color: silver;
+            border: 2px solid blue;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        /* Carousel Wrapper */
+        #blogsContainer {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blogsCarouselImagesWrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .blogsCarouselSlide {
+            flex: 1 0 25%;
+            box-sizing: border-box;
+            padding: 0 10px;
+            position: relative;
+            background-color: red;
+            border: 2px solid blue;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .blogsCarouselSlide:hover {
+            background-color: lightgoldenrodyellow; /* Light gold hover color */
+        }
+
+        .carouselImage {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .carouselPrev,
+        .carouselNext {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .carouselNext {
+            right: 0;
+        }
+
+        .carouselPrev:hover,
+        .carouselNext:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carouselPrev {
+            left: 0;
+        }
+
+        /* Additional Text Container */
+        .additionalText {
+            max-height: 50px; /* Adjust to control the initial visible height */
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        /* Expanded State */
+        .additionalText.expanded {
+            max-height: 200px; /* Adjust to control the expanded height */
+        }
+
+        /* Show More / Show Less Buttons */
+        .showMore {
+            display: inline;
+        }
+
+        .showLess {
+            display: none;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .blogsCarouselSlide {
+                flex: 1 0 50%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blogsCarouselSlide {
+                flex: 1 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="blogCarouselContainer">
+        <h1>Blogs</h1>
+        <div id="blogsContainer">
+            <div id="blogsCarouselWrapper">
+                <div class="blogsCarouselImagesWrapper">
+                    <!-- Carousel Items -->
+                    <div class="blogsCarouselSlide">
+                        <img src="./jpeg/01.jpeg" alt="Image 1" class="carouselImage">
+                        <h3>Wide Range of Vehicle Options</h3>
+                        <p class="additionalText">
+                            Our diverse fleet caters to varied transportation needs, featuring sedans, SUVs, Luxury
+                            Vehicles, Vans, and Specialty options. Vehicles come in different seating capacities,
+                            accommodating solo travelers to large groups for various occasions.
+                        </p>
+                        <button class="showMore">Read More</button>
+                        <button class="showLess">Read Less</button>
+                    </div>
+                    <div class="blogsCarouselSlide">
+                        <img src="./jpeg/02.jpeg" alt="Image 2" class="carouselImage">
+                        <h3>Experienced Drivers</h3>
+                        <p class="additionalText">
+                            Our drivers are highly trained, professional, and courteous, ensuring a safe and
+                            comfortable journey for all passengers.
+                        </p>
+                        <button class="showMore">Read More</button>
+                        <button class="showLess">Read Less</button>
+                    </div>
+                    <div class="blogsCarouselSlide">
+                        <img src="./jpeg/03.jpeg" alt="Image 3" class="carouselImage">
+                        <h3>Competitive Pricing</h3>
+                        <p class="additionalText">
+                            We offer competitive pricing without compromising on the quality of our services, making
+                            us an affordable choice for all.
+                        </p>
+                        <button class="showMore">Read More</button>
+                        <button class="showLess">Read Less</button>
+                    </div>
+                    <div class="blogsCarouselSlide">
+                        <img src="./jpeg/04.jpeg" alt="Image 4" class="carouselImage">
+                        <h3>24/7 Customer Support</h3>
+                        <p class="additionalText">
+                            Our customer support team is available around the clock to assist with any inquiries or
+                            issues you may have.
+                        </p>
+                        <button class="showMore">Read More</button>
+                        <button class="showLess">Read Less</button>
+                    </div>
+                    <div class="blogsCarouselSlide">
+                        <img src="./jpeg/05.jpeg" alt="Image 5" class="carouselImage">
+                        <h3>Easy Booking Process</h3>
+                        <p class="additionalText">
+                            Our user-friendly booking process allows you to easily reserve your vehicle online or
+                            through our mobile app.
+                        </p>
+                        <button class="showMore">Read More</button>
+                        <button class="showLess">Read Less</button>
+                    </div>
+                    <div class="blogsCarouselSlide">
+                        <img src="./jpeg/06.jpeg" alt="Image 6" class="carouselImage">
+                        <h3>Modern Fleet</h3>
+                        <p class="additionalText">
+                            Our fleet consists of modern, well-maintained vehicles to ensure a smooth and reliable
+                            journey every time.
+                        </p>
+                        <button class="showMore">Read More</button>
+                        <button class="showLess">Read Less</button>
+                    </div>
+                    <div class="blogsCarouselSlide">
+                        <img src="./jpeg/07.jpeg" alt="Image 7" class="carouselImage">
+                        <h3>Safety First</h3>
+                        <p class="additionalText">
+                            Safety is our top priority, and we adhere to strict safety standards and protocols for
+                            all our vehicles and services.
+                        </p>
+                        <button class="showMore">Read More</button>
+                        <button class="showLess">Read Less</button>
+                    </div>
+                </div>
+                <button class="carouselPrev" onclick="prevSlide()">&#10094;</button>
+                <button class="carouselNext" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let index = 0;
+        const slides = document.querySelectorAll('.blogsCarouselSlide');
+        const totalSlides = slides.length;
+        const slideInterval = 3000; // Change slide every 3 seconds
+
+        function showSlide(n) {
+            if (n >= totalSlides) index = 0;
+            if (n < 0) index = totalSlides - 1;
+
+            const offset = -index * (100 / 4); // Adjust this if you have different item counts
+            document.querySelector('.blogsCarouselImagesWrapper').style.transform = `translateX(${offset}%)`;
+        }
+
+        function nextSlide() {
+            index++;
+            showSlide(index);
+        }
+
+        function prevSlide() {
+            index--;
+            showSlide(index);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(index);
+
+            // Automatic Slide Transition
+            setInterval(nextSlide, slideInterval);
+
+            const showMoreButtons = document.querySelectorAll('.showMore');
+            const showLessButtons = document.querySelectorAll('.showLess');
+            const additionalTexts = document.querySelectorAll('.additionalText');
+
+            showMoreButtons.forEach((button, i) => {
+                button.addEventListener('click', () => {
+                    additionalTexts[i].classList.add('expanded');
+                    button.style.display = 'none';
+                    showLessButtons[i].style.display = 'inline';
+                });
+            });
+
+            showLessButtons.forEach((button, i) => {
+                button.addEventListener('click', () => {
+                    additionalTexts[i].classList.remove('expanded');
+                    button.style.display = 'none';
+                    showMoreButtons[i].style.display = 'inline';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

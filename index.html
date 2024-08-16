@@ -1,0 +1,2683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fixed Navbar</title>
+    <style>
+        .container_1 {
+            background-image: url('./jpeg/Road.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: silver;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            /* Ensures navbar stays on top of other content */
+        }
+
+        .navbar .left,
+        .navbar .right {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 38px;
+            width: 155px;
+        }
+
+
+
+
+
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* START affordable_And_On_Time_Cabs Container styling */
+        #affordable_And_On_Time_Cabs {
+            padding: 20px;
+            border: 2px solid blue;
+            /* Black border for the main container */
+            border-radius: 10px;
+            /* Rounded corners */
+            margin-left: 20px;
+            /* Left margin */
+            background-color: silver;
+            /* Light background for contrast */
+        }
+
+        /* Flex container for service items */
+        .services_Container {
+
+            display: flex;
+            /* Align items in a row */
+            justify-content: space-between;
+            /* Space between items */
+            flex-wrap: wrap;
+            /* Wrap items to new lines if necessary */
+        }
+
+        /* Individual service item styling */
+        .service_Container {
+            flex: 1 1 100%;
+            /* Full width on small screens */
+            margin: 10px;
+            /* Space around items */
+            padding: 10px;
+            /* Padding inside items */
+            border: 2px solid blue;
+            /* Light border around each item */
+            border-radius: 10px;
+            /* Rounded corners */
+            text-align: center;
+            /* Center text */
+            min-height: 300px;
+            /* Minimum height for consistency */
+            box-sizing: border-box;
+            /* Include padding and border in width/height */
+            position: relative;
+            /* For absolute positioning of buttons */
+            background-color: silver;
+            /* White background for each item */
+            transition: transform 0.3s ease;
+            /* Smooth transition for animations */
+        }
+
+        /* Image styling */
+        .service_Image {
+            width: 100%;
+            /* Full width of container */
+            height: auto;
+            /* Maintain aspect ratio */
+            border-radius: 10px;
+            /* Rounded corners */
+            transition: transform 0.3s ease;
+            /* Smooth transition for hover effect */
+        }
+
+        .service_Image:hover {
+            transform: scale(1.05);
+            /* Slight zoom effect on hover */
+        }
+
+        /* Read More and Read Less styling */
+        .read_More_Btn,
+        .read_Less_Btn {
+            background: none;
+            /* No background */
+            color: blue;
+            /* Blue text color */
+            border: none;
+            /* No border */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+            text-decoration: underline;
+            /* Underlined text */
+            padding: 0;
+            /* No padding */
+            margin: 10px;
+            /* Space around buttons */
+            font-size: 16px;
+            /* Font size */
+        }
+
+        /* Initially hide the expanded content */
+        .read_More_Content {
+            display: none;
+            /* Hidden by default */
+            margin-top: 10px;
+            /* Space above the text */
+        }
+
+        /* Responsive styles */
+        @media (min-width: 768px) {
+            .service_Container {
+                flex: 1 1 48%;
+                /* Two items per row on medium screens */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .service_Container {
+                flex: 1 1 23%;
+                /* Four items per row on large screens */
+            }
+        }
+
+        /* THE-END affordable_And_On_Time_Cabs Container styling */
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1px 1px;
+            background-color: silver;
+
+        }
+
+        .navbar .left,
+        .navbar .right {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 38px;
+            width: 155px;
+        }
+
+        .nav-icon {
+            height: 30px;
+            margin-left: 10px;
+        }
+
+        /* Basic styling for the custom dropdown */
+        .custom-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-button {
+            background-color: black;
+            /* Green background */
+            color: white;
+            /* White text */
+            border: none;
+            /* Remove border */
+            padding: 10px 20px;
+            /* Some padding */
+            font-size: 16px;
+            /* Text size */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+            text-align: left;
+            display: flex;
+            align-items: center;
+            width: 200px;
+            justify-content: space-between;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            /* Light background */
+            min-width: 200px;
+            /* Minimum width of the dropdown */
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            /* Shadow effect */
+            z-index: 1;
+            max-height: 200px;
+            /* Limit height of dropdown */
+            overflow-y: auto;
+            /* Scroll if content is too long */
+        }
+
+        .dropdown-item {
+            padding: 10px 20px;
+            /* Padding for items */
+            display: flex;
+            /* Flexbox for aligning image and text */
+            align-items: center;
+            /* Center items vertically */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+        }
+
+        .dropdown-item:hover {
+            background-color: #f1f1f1;
+            /* Change background on hover */
+        }
+
+        .dropdown-image {
+            width: 30px;
+            /* Adjust width */
+            height: 30px;
+            /* Adjust height */
+            margin-right: 10px;
+            /* Space between image and text */
+        }
+
+        .dropdown-text {
+            font-size: 16px;
+            /* Text size */
+        }
+
+        .input-container {
+            position: relative;
+            width: 270px;
+            /* Adjust width as needed */
+        }
+
+        .input-container input {
+            width: 100%;
+            padding: 10px 40px 10px 10px;
+            /* Adjust padding to make space for the icon */
+            border-radius: 5px;
+            border: 1px solid black;
+            font-size: 16px;
+        }
+
+        .input-container i {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: black;
+            /* Icon color */
+            cursor: pointer;
+            /* Change cursor to pointer to indicate clickable */
+            z-index: 1;
+            /* Ensure icon is above the input element */
+        }
+
+        .container_2 {
+
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 300px;
+            margin-left: 100px;
+            /* Margin on the left side */
+            padding: 15px;
+            border: 2px solid black;
+            /* Black border */
+            background-color: silver;
+            border-radius: 20px;
+            /* Rounded corners */
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button-container .button {
+            flex: 1;
+            /* Auto-adjust width */
+            border: 1px solid black;
+            background-color: white;
+            color: black;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button-container .button:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .select-container,
+        .input-container,
+        .date-time-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .radio-container {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        input[type="text"],
+        select,
+        input[type="date"],
+        input[type="time"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            /* Light gray border */
+            border-radius: 5px;
+        }
+
+        .marquee-container {
+            width: 100%;
+            text-align: center;
+        }
+
+        marquee {
+            color: blue;
+            /* Marquee text color */
+        }
+
+        .button-container {
+            color: white;
+        }
+
+        .button.search-button {
+            background-color: black;
+            color: white;
+        }
+
+        .button-container .button.search-button:hover {
+            background-color: blue;
+            color: white;
+        }
+
+        .container_3 {
+            background-image: url('./jpeg/Road.jpeg');
+            text-align: right;
+            padding: 20px;
+        }
+
+        .container_3 .labels {
+            margin-top: -400px;
+            text-align: right;
+            padding: 20px;
+        }
+
+        .store-icon {
+            width: 150px;
+            margin: 10px;
+        }
+
+        .container_4,
+        .container_5,
+        .container_10 {
+            padding: 20px;
+        }
+
+        .service {
+            margin-bottom: 20px;
+        }
+
+        .service-icon {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        .read-more-content {
+            display: none;
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 100%;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-image {
+            width: 100%;
+        }
+
+        .button {
+            background-color: black;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+
+        /* start about_Us_Cabs_Container_2 Container styling */
+        .about_Us_Cabs_Container_2 {
+            display: flex;
+            /* Use flexbox for layout */
+            justify-content: center;
+            /* Center content horizontally */
+            align-items: center;
+            /* Center content vertically */
+            padding: 20px;
+            /* Add padding inside the container */
+            margin: 20px;
+            /* Add margin outside the container */
+            border: 2px solid blue;
+            /* Blue border around the container */
+            border-radius: 10px;
+            /* Rounded corners */
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: silver;
+            /* Background color of the container */
+        }
+
+        /* Inner content layout */
+        .about_Us_Cabs_Container_2_content {
+            display: flex;
+            /* Use flexbox for layout */
+            flex-direction: row;
+            /* Arrange items in a row */
+            align-items: center;
+            /* Center items vertically */
+            max-width: 1200px;
+            /* Maximum width of the content */
+            width: 100%;
+            /* Full width of the container */
+        }
+
+        /* Text section styling */
+        .text {
+            flex: 1;
+            /* Allow text section to grow and fill available space */
+            margin-right: 20px;
+            /* Add space between text and image */
+        }
+
+        /* Image section styling */
+        .image {
+            flex: 1;
+            /* Allow image section to grow and fill available space */
+            display: flex;
+            /* Use flexbox for layout */
+            justify-content: center;
+            /* Center image horizontally */
+            align-items: center;
+            /* Center image vertically */
+        }
+
+        /* Image styling */
+        .image img {
+            max-width: 100%;
+            /* Ensure image fits within its container */
+            height: auto;
+            /* Maintain aspect ratio */
+            border-radius: 10px;
+            /* Rounded corners */
+            border: 2px solid blue;
+            /* Blue border around the image */
+            transition: transform 0.5s ease;
+            /* Smooth zoom effect */
+        }
+
+        /* Image zoom effect on hover */
+        .image img:hover {
+            transform: scale(1.05);
+            /* Slight zoom effect */
+        }
+
+        /* Responsive design adjustments */
+        @media (max-width: 768px) {
+            .about_Us_Cabs_Container_2_content {
+                flex-direction: column;
+                /* Stack items vertically on small screens */
+            }
+
+            .text {
+                margin-right: 0;
+                /* Remove right margin on small screens */
+                margin-bottom: 20px;
+                /* Add bottom margin for spacing */
+            }
+        }
+
+        /* the end about_Us_Cabs_Container_2 Container styling */
+
+
+
+        #chatbot-icon {
+            position: fixed;
+            bottom: 40px;
+            right: 20px;
+            background-color: blue;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        #chatbot-form {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            background-color: white;
+            padding: 15px;
+            border: 2px solid black;
+            /* Black border color */
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            width: 300px;
+            max-height: 500px;
+            /* Adjust height as needed */
+            overflow-y: auto;
+            /* Scroll if content exceeds max height */
+        }
+
+        #chatbot-form h1 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        #chatbot-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #chatbot-form input,
+        #chatbot-form textarea {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #chatbot-form textarea {
+            height: 100px;
+            /* Fixed height for textarea */
+        }
+
+        #chatbot-form button {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+
+        #chatbot-form button:hover {
+            background-color: darkblue;
+        }
+
+
+        /* Carousel Container Styles */
+        #carousel-container {
+            width: 90%;
+            margin: auto;
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .carousel-images-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 20px;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .carousel-slide {
+            min-width: calc(25% - 20px);
+            box-sizing: border-box;
+            border: 2px solid black;
+        }
+
+        .carousel-prev,
+        .carousel-next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-next {
+            right: 0;
+        }
+
+        .carousel-prev:hover,
+        .carousel-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-prev {
+            left: 0;
+        }
+
+        /* Read More/Less Buttons */
+        .additional-text {
+            display: none;
+        }
+
+        .book-now-button {
+            display: inline-block;
+            width: 100%;
+            height: 70px;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Transparent black */
+            color: white;
+            border: 2px solid blue;
+            text-align: center;
+            line-height: 70px;
+            /* Match the height for vertical centering */
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            /* Remove underline */
+        }
+
+        .book-now-button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Darker transparent black on hover */
+        }
+
+
+
+        /*START explore_Car_Rentals_Container_6 Apply box-sizing to all elements for consistent layout */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Container styling for the carousel */
+        .explore_Car_Rentals_Container_6 {
+            width: 100%;
+            /* Full width of the viewport */
+            margin: 0 auto;
+            /* Center the container */
+            overflow: hidden;
+            /* Hide overflowing content */
+            border: 2px solid black;
+            /* Black border for the container */
+            background-color: silver;
+            /* Silver background color */
+            position: relative;
+            /* Position for absolute child elements */
+            padding: 20px;
+            /* Padding inside the container */
+        }
+
+        /* Center the heading text */
+        h1 {
+            text-align: center;
+        }
+
+        /* Wrapper styling for carousel items */
+        .explore_Car_Rentals_Wrapper_6 {
+            display: flex;
+            /* Align items in a row */
+            transition: transform 0.5s ease-in-out;
+            /* Smooth transition for slide movement */
+        }
+
+        /* Styling for each carousel item */
+        .explore_Car_Rentals_Item_6 {
+            min-width: 20%;
+            /* Each item takes up 20% of the container width */
+            text-align: center;
+            /* Center text inside the item */
+            transition: transform 0.5s ease-in-out;
+            /* Smooth transition for item transform */
+        }
+
+        /* Styling for images inside carousel items */
+        .explore_Car_Rentals_Item_6 img {
+            width: 150px;
+            /* Fixed width for images */
+            height: 150px;
+            /* Fixed height for images */
+            border: 2px solid blue;
+            /* Blue border around images */
+        }
+
+        /* Styling for the heading inside each carousel item */
+        .explore_Car_Rentals_Item_6 h2 {
+            color: black;
+            /* Black text color */
+        }
+
+        /* Styling for carousel buttons */
+        .explore_Car_Rentals_Button_6 {
+            position: absolute;
+            /* Absolute positioning relative to the container */
+            top: 50%;
+            /* Vertically center the button */
+            transform: translateY(-50%);
+            /* Adjust for vertical centering */
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent background */
+            color: white;
+            /* White text color */
+            border: none;
+            /* No border */
+            padding: 10px;
+            /* Padding inside the button */
+            cursor: pointer;
+            /* Pointer cursor on hover */
+            z-index: 10;
+            /* Ensure the button is above other content */
+        }
+
+        /* Positioning for the previous button */
+        .explore_prev_6 {
+            left: 10px;
+            /* 10px from the left edge */
+        }
+
+        /* Positioning for the next button */
+        .explore_next_6 {
+            right: 10px;
+            /* 10px from the right edge */
+        }
+
+        /* THE END explore_Car_Rentals_Container_6 Apply box-sizing to all elements for consistent layout */
+
+
+        .customer-support-container {
+            background-color: lightsteelblue;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 20px;
+            width: 100%;
+            /* Container width set to 100% */
+            border: 2px solid blue;
+            /* Container border color */
+            box-sizing: border-box;
+        }
+
+        .customer-support-item {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            padding: 15px;
+            border: 2px solid blue;
+            /* Border color of individual items */
+            border-radius: 8px;
+            background-color: #d3d3d3;
+            /* Light ash background color */
+            width: 30%;
+            box-sizing: border-box;
+        }
+
+        .customer-support-icon {
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .customer-support-text h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #000;
+            /* Dark black font color */
+            font-weight: bold;
+            /* Slightly bold font */
+        }
+
+        .customer-support-text p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #333;
+            /* Dark grey font color for better readability */
+        }
+
+        @media (max-width: 768px) {
+            .customer-support-item {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+
+        .Customer_fivestars-container-carousel {
+            width: 100%;
+            background-color: black;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+            border: 2px solid red;
+        }
+
+        .Customer_fivestars-carousel {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .Customer_fivestars-carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+        }
+
+        .Customer_fivestars-item {
+            background-color: silver;
+            border: 2px solid blue;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+            color: black;
+            font-weight: bold;
+            flex: 0 0 calc(33.33% - 20px);
+            /* Adjusted width for 3 containers at a time */
+            max-width: calc(33.33% - 20px);
+            /* Adjusted width for 3 containers at a time */
+            transition: transform 0.5s ease-in-out;
+            position: relative;
+        }
+
+        .Customer_fivestars-item img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .Customer_fivestars-item .Customer_fivestars-name {
+            margin-bottom: 5px;
+        }
+
+        .Customer_fivestars-item .Customer_fivestars-grade {
+            font-size: 20px;
+        }
+
+        .Customer_fivestars-item .Customer_fivestars-grade.yellow-star {
+            color: yellow;
+        }
+
+        .Customer_fivestars-item .Customer_fivestars-grade.gray-star {
+            color: gray;
+        }
+
+        .Customer_fivestars-item .Customer_fivestars-grade.red-star {
+            color: red;
+        }
+
+        .Customer_fivestars-item .Customer_fivestars-logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            /* Adjust size as needed */
+            height: 40px;
+            /* Adjust size as needed */
+            object-fit: contain;
+        }
+
+        .Customer_fivestars-carousel-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .Customer_fivestars-prev {
+            left: 10px;
+        }
+
+        .Customer_fivestars-next {
+            right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .Customer_fivestars-item {
+                flex: 0 0 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .Customer_fivestars-item {
+                flex: 0 0 calc(100% - 20px);
+                max-width: calc(100% - 20px);
+            }
+        }
+
+
+
+        .download_App_Container {
+            width: 100%;
+            height: 66px;
+            background-color: black;
+            border: 2px solid blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .download_App_Container a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            width: auto;
+            padding: 5px 10px;
+            border: none;
+            white-space: nowrap;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .download_App_Container a:hover {
+            background-color: white;
+            color: black;
+        }
+
+
+        .workplace_Commute {
+            background-color: silver;
+            border: 2px solid blue;
+            color: black;
+            font-weight: bold;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .workplace_Commute h1 {
+            margin-top: 60px;
+        }
+
+        .workplace_Commute h3 {
+            margin: 60px 0 0 0;
+        }
+
+        .workplace_Commute p {
+            margin: 60px 0;
+        }
+
+        .learnMoreButton {
+            color: blue;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .learnMoreButton img {
+            margin-left: 5px;
+        }
+
+        .responsiveImage {
+            margin-right: 100px;
+            max-width: 400px;
+            /* Adjust this value as needed */
+            height: auto;
+            animation: slideIn 2s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            padding: 5px 10px;
+            border: none;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        .nav-icon {
+            height: 30px;
+            margin-left: 10px;
+        }
+
+        .custom-dropdown {
+            position: relative;
+        }
+
+        .dropdown-button {
+            padding: 5px 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-button:hover {
+            background-color: #555;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            z-index: 1000;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown-image {
+            height: 20px;
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .dropdown-text {
+            font-size: 14px;
+        }
+
+        /* Optional: Add some margin-top to body content to avoid overlap with fixed navbar */
+        body {
+            margin-top: 60px;
+            /* Adjust based on the height of your navbar */
+        }
+
+
+        .contact_Us_to_know_more_Container {
+            width: 100%;
+            height: 66px;
+            background-color: black;
+            border: 2px solid blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .contact_Us_to_know_more_Container a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            width: auto;
+            padding: 5px 10px;
+            border: none;
+            white-space: nowrap;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .contact_Us_to_know_more_Container a:hover {
+            background-color: white;
+            color: black;
+        }
+
+
+
+        /* Main Container */
+        #blogCarouselContainer {
+            width: 100%;
+            margin: auto;
+            box-sizing: border-box;
+            background-color: silver;
+            border: 2px solid blue;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        /* Carousel Wrapper */
+        #blogsCarouselWrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blogsCarouselImagesWrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .blogsCarouselSlide {
+            flex: 1 0 25%;
+            box-sizing: border-box;
+            padding: 0 10px;
+            position: relative;
+            background-color: yellowgreen;
+            border: 2px solid blue;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .blogsCarouselSlide:hover {
+            background-color: lightgoldenrodyellow;
+            /* Light gold hover color */
+        }
+
+        .carouselImage {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .carouselPrev,
+        .carouselNext {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .carouselNext {
+            right: 0;
+        }
+
+        .carouselPrev:hover,
+        .carouselNext:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .carouselPrev {
+            left: 0;
+        }
+
+        /* Additional Text Container */
+        .additionalText {
+            max-height: 50px;
+            /* Adjust to control the initial visible height */
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        /* Expanded State */
+        .additionalText.expanded {
+            max-height: 200px;
+            /* Adjust to control the expanded height */
+        }
+
+        /* Show More / Show Less Buttons */
+        .showMore {
+            display: inline;
+        }
+
+        .showLess {
+            display: none;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .blogsCarouselSlide {
+                flex: 1 0 50%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blogsCarouselSlide {
+                flex: 1 0 100%;
+            }
+        }
+
+
+        .faqs_Container {
+            width: 100%;
+            height: 66px;
+            background-color: black;
+            border: 2px solid blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .faqs_Container h1 {
+            color: white;
+            font-weight: bold;
+            margin: 0;
+            padding: 5px 10px;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .faqs_Container h1:hover {
+            background-color: white;
+            color: black;
+        }
+
+
+
+        .last_Down_Image_Container_14_mainContainer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            border: 2px solid blue;
+            animation: last_Down_Image_Container_14_slideIn 1s ease-in-out;
+        }
+
+        .last_Down_Image_Container_14_container {
+            flex: 1;
+            text-align: left;
+            padding: 20px;
+        }
+
+        .last_Down_Image_Container_14_container h1,
+        .last_Down_Image_Container_14_container p {
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        .last_Down_Image_Container_14_appIcons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .last_Down_Image_Container_14_appIcons img {
+            width: 150px;
+            height: auto;
+            margin: 0 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .last_Down_Image_Container_14_appIcons img:hover {
+            transform: scale(1.1);
+        }
+
+        .last_Down_Image_Container_14_imageContainer {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        .last_Down_Image_Container_14_imageContainer img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .last_Down_Image_Container_14_imageContainer img:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes last_Down_Image_Container_14_slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .last_Down_Image_Container_14_mainContainer {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .last_Down_Image_Container_14_container {
+                padding: 10px;
+            }
+
+            .last_Down_Image_Container_14_imageContainer {
+                justify-content: center;
+                padding: 10px;
+            }
+
+            .last_Down_Image_Container_14_appIcons img {
+                width: 120px;
+            }
+        }
+
+
+
+        .footer_Container_21 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            border: 2px solid blue;
+            padding: 20px;
+            background-color: silver;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .services label {
+            margin-right: 100px;
+        }
+
+        .footer_Container_21 h2 {
+            text-align: center;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .footer_Container_21 a {
+            color: black;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        .footer_Container_21 a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: blue;
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+
+        .footer_Container_21 a:hover {
+            color: #00f;
+        }
+
+        .footer_Container_21 a:hover::before {
+            transform: translateX(0);
+        }
+
+        .footer_Container_21 hr {
+            border: 1px solid white;
+            margin: 20px 0;
+        }
+
+        .footer_Container_21 label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .footer_Container_21 .links,
+        .footer_Container_21 .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .footer_Container_21 .links a,
+        .footer_Container_21 .service-group a {
+            margin: 5px 0;
+            font-size: 14px;
+            transition: transform 0.3s;
+        }
+
+        .footer_Container_21 .links a:hover,
+        .footer_Container_21 .service-group a:hover {
+            transform: scale(1.05);
+        }
+
+        .footer_Container_21 .service-group {
+            flex: 1 1 22%;
+            margin: 10px;
+        }
+
+        .footer_Container_21 .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .footer_Container_21 .social-icons img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s;
+        }
+
+        .footer_Container_21 .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        .footer_Container_21 .copyright {
+            text-align: center;
+            margin-top: 20px;
+            color: blue;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+
+
+
+        /*START why_Choose_Us_Container_15-container Carousel Container Styles */
+        #why_Choose_Us_Container_15-container {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 2px solid blue;
+            /* Border color blue */
+            background-color: silver;
+            /* Background color silver */
+        }
+
+        .why_Choose_Us_Container_15-carousel {
+            position: relative;
+            overflow: hidden;
+            border: 2px solid blue;
+            /* Border color blue */
+            background-color: silver;
+            /* Background color silver */
+            border-radius: 10px;
+        }
+
+        .why_Choose_Us_Container_15-carousel-images-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 20px;
+        }
+
+        .why_Choose_Us_Container_15-carousel-slide {
+            flex: 0 0 auto;
+            width: calc(100% / 4 - 20px);
+            border: 2px solid blue;
+            /* Border color blue */
+            border-radius: 10px;
+            background: silver;
+            /* Background color silver */
+            box-sizing: border-box;
+            padding: 20px;
+            /* Padding to prevent overlap */
+        }
+
+        .why_Choose_Us_Container_15-carousel-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.5s ease;
+        }
+
+        .why_Choose_Us_Container_15-carousel-prev,
+        .why_Choose_Us_Container_15-carousel-next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            z-index: 1;
+        }
+
+        .why_Choose_Us_Container_15-carousel-next {
+            right: 0;
+        }
+
+        .why_Choose_Us_Container_15-carousel-prev {
+            left: 0;
+        }
+
+        .why_Choose_Us_Container_15-carousel-prev:hover,
+        .why_Choose_Us_Container_15-carousel-next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Heading Style */
+        h1 {
+            text-align: center;
+            /* Center the heading */
+            margin-bottom: 20px;
+            /* Add spacing below the heading */
+        }
+
+        h3 {
+            margin: 10px 0;
+            /* Margin to avoid overlap with other elements */
+        }
+
+        /* Read More/Less Buttons */
+        .why_Choose_Us_Container_15-additional-text {
+            display: none;
+            margin-top: 10px;
+            /* Add spacing above the text */
+        }
+
+        .why_Choose_Us_Container_15-show-more,
+        .why_Choose_Us_Container_15-show-less {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            /* Spacing above the button */
+        }
+
+        .why_Choose_Us_Container_15-show-less {
+            display: none;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .why_Choose_Us_Container_15-carousel-slide {
+                width: calc(100% / 3 - 20px);
+                /* 3 items per view */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .why_Choose_Us_Container_15-carousel-slide {
+                width: calc(100% / 2 - 20px);
+                /* 2 items per view */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .why_Choose_Us_Container_15-carousel-slide {
+                width: calc(100% - 20px);
+                /* 1 item per view */
+            }
+        }
+
+        /*THE END why_Choose_Us_Container_15-container Carousel Container Styles */
+    </style>
+</head>
+
+
+
+
+<body>
+    <div class="container_1">
+        <div class="navbar">
+            <div class="left">
+                <img src="logo.png" alt="WTicabs Logo" class="logo">
+                <div class="button-container">
+                    <button class="button" onclick="window.location.href='http://127.0.0.1:5500/index.html'">Book
+                        Cab</button>
+                    <button class="button"
+                        onclick="window.location.href='https://www.wticabs.com/workplace-commute'">WTicabs
+                        Corporate</button>
+                    <button class="button" onclick="window.location.href='https://www.wticabs.com/contact-us'">Contact
+                        Us</button>
+                </div>
+            </div>
+            <div class="right">
+                <div class="custom-dropdown">
+                    <button class="dropdown-button">WTiCabs International</button>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item" data-value="ind">
+                            <img src="./JPEG/india_flag.JPEG" alt="IND" class="dropdown-image">
+                            <span class="dropdown-text">IND</span>
+                        </div>
+                        <div class="dropdown-item" data-value="uae">
+                            <img src="./JPEG/UAE.JPEG" alt="UAE" class="dropdown-image">
+                            <span class="dropdown-text">UAE</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="http://127.0.0.1:5500/signup.html"><img src="./jpeg/signup.jpeg" alt="Sign Up"
+                        class="nav-icon"></a>
+                <a href="http://127.0.0.1:5500/signin.html"><img src="./jpeg/signin.jpeg" alt="Sign In"
+                        class="nav-icon"></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const button = document.querySelector('.dropdown-button');
+            const content = document.querySelector('.dropdown-content');
+
+            button.addEventListener('click', function () {
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            });
+
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    button.textContent = this.querySelector('.dropdown-text').textContent;
+                    content.style.display = 'none';
+                });
+            });
+
+            // Close dropdown if click outside
+            window.addEventListener('click', function (event) {
+                if (!event.target.matches('.dropdown-button')) {
+                    if (content.style.display === 'block') {
+                        content.style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+
+    </br></br></br>
+    <div class="container_2">
+        <div class="button-container">
+            <button class="button" onclick="window.location.href='http://127.0.0.1:5500/airport.html'">Airport</button>
+            <button class="button" onclick="window.location.href='http://127.0.0.1:5500/airport.html'">Railway</button>
+            <button class="button"
+                onclick="window.location.href='http://127.0.0.1:5500/airport.html'">Outstation</button>
+        </div>
+
+        <div class="radio-container">
+            <input type="radio" id="airport_pickup" name="airport" value="pickup">
+            <label for="airport_pickup">Airport Pickup</label>
+            <input type="radio" id="airport_drop" name="airport" value="drop">
+            <label for="airport_drop">Airport Drop</label>
+        </div>
+
+        <div class="select-container">
+            <select>
+                <option>Select City</option>
+                <option>Delhi</option>
+                <option>Bangalore</option>
+                <option>Noida</option>
+                <option>Pune</option>
+                <option>Chennai</option>
+                <option>Kolkata</option>
+                <option>Hyderabad</option>
+                <option>Ayodhya</option>
+                <option>Srinagar</option>
+                <option>Ahmadabad</option>
+                <option>Amrithsar</option>
+                <option>Chandigargh</option>
+                <option>Dharamshala</option>
+                <option>Guwahati</option>
+                <option>Indore</option>
+                <option>Jabalpur</option>
+                <option>Jaipur</option>
+                <option>Lucknow</option>
+                <option>Mumbai</option>
+                <option>Nagpur</option>
+                <option>Patna</option>
+                <option>Raipur</option>
+                <option>Ranchi</option>
+                <option>Varanasi</option>
+                <option>Vizag</option>
+
+            </select>
+            <select>
+                <option>Select Terminal</option>
+                <option>Terminal 1 </option>
+                <option>Terminal 2</option>
+                <option>Terminal 3</option>
+                <option>Terminal 4</option>
+                <option>Terminal 5</option>
+            </select>
+        </div>
+
+        <div class="input-container">
+            <input type="text" placeholder="Drop Location" id="textbox">
+            <i class="fas fa-map-marker-alt" onclick="openGoogleMaps()"></i>
+        </div>
+
+        <div class="date-time-container">
+            <input type="date" value="2024-07-20">
+            <input type="time" value="15:00">
+        </div>
+
+        <button class="button search-button">Search</button>
+
+        <div class="marquee-container">
+            <marquee>Double refund if your vehicle is over 30 minutes late ** | Rate applicable only for online
+                booking,
+                offline rate may vary according to the outlet location.</marquee>
+        </div>
+    </div>
+
+    <script>
+        function openGoogleMaps() {
+            var latitude = 37.7749; // Replace with your latitude
+            var longitude = -122.4194; // Replace with your longitude
+            var url = `https://www.google.com/maps?q=${latitude},${longitude}`;
+            window.open(url, '_blank');
+        }
+    </script>
+
+    <div class="container_3">
+        <div class="labels">
+            <label>Best Cab Services for Airport, Railway Station, and Outstation | WTicabs</label><br><br>
+        </div>
+        <label class="label2">Book Airport Cabs<br>Starting from Rs. 299/-</label>
+
+        <img src="google_play.png" alt="Google Play" class="store-icon">
+        <img src="app_store.png" alt="App Store" class="store-icon">
+    </div>
+    </br></br>
+
+    <!--Start about_Us_Cabs_Container_2 Container -->
+    <div class="about_Us_Cabs_Container_2">
+        <div class="about_Us_Cabs_Container_2_content">
+            <!-- Text content -->
+            <div class="text">
+                <h2>About Us</h2>
+                <p>
+                    Whether you need a ride to the airport, railway station pick & drop, outstation travel, a
+                    comfortable commute to work, or a reliable transportation solution for your clients, WTicabs has
+                    got you covered. Our well-maintained fleet of vehicles and professional drivers guarantee your
+                    safety and comfort throughout your journey. With round-the-clock availability, you can rely on
+                    us at any time, day or night.
+                </p>
+                <p>
+                    Experience top-notch cab services with WTicabs now.
+                </p>
+            </div>
+            <!-- Image content -->
+            <div class="image">
+                <img src="./jpeg/About_us.jpeg" alt="WTicabs"> <!-- Image of WTicabs -->
+            </div>
+        </div>
+    </div>
+    <!--The End about_Us_Cabs_Container_2 Container -->
+    </br></br>
+
+    <!-- START affordable_And_On_Time_Cabs Main container for services -->
+    <div id="affordable_And_On_Time_Cabs">
+        <!-- Main heading with center alignment -->
+        <h2 style="text-align: center; margin: 0; padding: 20px;">Affordable & On Time Cabs</h2>
+
+        <div class="services_Container">
+            <!-- Service container for Airport Cab Services -->
+            <div id="affordable_And_On_Time_Cabs_Airport_Cab_Services" class="service_Container">
+                <img src="./JPEG/airport_cabs_services.jpeg" alt="Airport Cab Services" class="service_Image">
+                <h3>Airport Cab Services</h3>
+                <p>WTicabs airport taxi service is designed to provide hassle-free transfers to and from the airport.
+                </p>
+                <div id="affordable_And_On_Time_Cabs_Read_More1" class="read_More_Content">
+                    <p>Whether you need an airport pickup or drop-off, our professional drivers will be there to assist
+                        you. With our dedication to customer satisfaction, we strive to deliver exceptional service,
+                        ensuring that you reach your destination safely and on time.</p>
+                </div>
+                <button class="read_More_Btn"
+                    onclick="toggleReadMore('affordable_And_On_Time_Cabs_Read_More1', this)">Read More</button>
+                <button class="read_Less_Btn" onclick="toggleReadLess('affordable_And_On_Time_Cabs_Read_More1', this)"
+                    style="display:none;">Read Less</button>
+            </div>
+            <!-- Service container for Railway Station Cab Services -->
+            <div id="affordable_And_On_Time_Cabs_Railway_Station_Cab_Services" class="service_Container">
+                <img src="./JPEG/Railway_Station_cabs_services.jpeg" alt="Railway Station Cab Services"
+                    class="service_Image">
+                <h3>Railway Station Cab Services</h3>
+                <p>WTicabs provides swift and dependable railway station cab services. Our experienced drivers</p>
+                <div id="affordable_And_On_Time_Cabs_Read_More2" class="read_More_Content">
+                    <p> ensure a safe and comfortable journey. with our streamlined booking and top-notch vehicles, we
+                        make your railway station travels stress-free and convenient. Choose WTiCabs for a seamless
+                        transit experience.</p>
+                </div>
+                <button class="read_More_Btn"
+                    onclick="toggleReadMore('affordable_And_On_Time_Cabs_Read_More2', this)">Read More</button>
+                <button class="read_Less_Btn" onclick="toggleReadLess('affordable_And_On_Time_Cabs_Read_More2', this)"
+                    style="display:none;">Read Less</button>
+            </div>
+            <!-- Service container for Outstation Cab Services -->
+            <div id="affordable_And_On_Time_Cabs_Outstation_Cab_Services" class="service_Container">
+                <img src="./JPEG/Outstation_Cabs_services.jpeg" alt="Outstation Cab Services" class="service_Image">
+                <h3>Outstation Cab Services</h3>
+                <p>Whether you're planning a weekend getaway, a business trip, or a family vacation, our reliable and
+                    comfortable</p>
+                <div id="affordable_And_On_Time_Cabs_Read_More3" class="read_More_Content">
+                    <p> cab service is here to ensure a smooth and enjoyable journey. our fleet of well-maintained
+                        vehicles, driven by professional and experienced drivers, will take you to your destination
+                        safely and efficiently.</p>
+                </div>
+                <button class="read_More_Btn"
+                    onclick="toggleReadMore('affordable_And_On_Time_Cabs_Read_More3', this)">Read More</button>
+                <button class="read_Less_Btn" onclick="toggleReadLess('affordable_And_On_Time_Cabs_Read_More3', this)"
+                    style="display:none;">Read Less</button>
+            </div>
+            <!-- Service container for Workplace Commute Services -->
+            <div id="affordable_And_On_Time_Cabs_Workplace_Commute_Services" class="service_Container">
+                <img src="./JPEG/workplace_commute-_Services.jpeg" alt="Workplace Commute Services"
+                    class="service_Image">
+                <h3>Workplace Commute Services</h3>
+                <p>Rethinking commuting for unmatched employee experience & a smarter, more sustainable workplace? If
+                    yes,</p>
+                <div id="affordable_And_On_Time_Cabs_Read_More4" class="read_More_Content">
+                    <p> then go for WTicabs. We provide well-managed and structured commute facilities to enhance the
+                        productivity of employees. Our hassle-free, best workplace commute service is committed to
+                        exceeding our customers' expectations for the service and overall value proposition in people
+                        transportation.</p>
+                </div>
+                <button class="read_More_Btn"
+                    onclick="toggleReadMore('affordable_And_On_Time_Cabs_Read_More4', this)">Read More</button>
+                <button class="read_Less_Btn" onclick="toggleReadLess('affordable_And_On_Time_Cabs_Read_More4', this)"
+                    style="display:none;">Read Less</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleReadMore(id, button) {
+            const readMoreDiv = document.getElementById(id);
+            const readLessButton = button.nextElementSibling;
+            readMoreDiv.style.display = 'block';
+            button.style.display = 'none'; // Hide Read More button
+            readLessButton.style.display = 'inline'; // Show Read Less button
+        }
+
+        function toggleReadLess(id, button) {
+            const readMoreDiv = document.getElementById(id);
+            const readMoreButton = button.previousElementSibling;
+            readMoreDiv.style.display = 'none';
+            button.style.display = 'none'; // Hide Read Less button
+            readMoreButton.style.display = 'inline'; // Show Read More button
+        }
+    </script>
+    <!-- START affordable_And_On_Time_Cabs Main container for services -->
+    </br></br>
+
+    <div id="chatbot-icon" onclick="toggleForm()">💬</div>
+
+    <div id="chatbot-form">
+        <h1>GET IN TOUCH</h1>
+        <form>
+            <label for="full-name">Full Name:</label>
+            <input type="text" id="full-name" name="full-name" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="mobile-number">Mobile Number:</label>
+            <input type="text" id="mobile-number" name="mobile-number" required><br>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea><br>
+
+            <label for="captcha">Captcha:</label>
+            <input type="text" id="captcha" name="captcha" required placeholder="Enter captcha here">
+            <button type="button" id="refresh-captcha">♻️ Refresh Captcha</button><br>
+
+            <button type="submit" id="submit-button">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleForm() {
+            var form = document.getElementById('chatbot-form');
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+
+        document.getElementById('refresh-captcha').onclick = function () {
+            // Placeholder functionality: Show an alert for now
+            alert('Captcha refresh button clicked. No real captcha functionality is implemented.');
+        };
+    </script>
+    </br></br>
+
+
+
+    <!-- START why_Choose_Us_Container_15-container Carousel Container -->
+    <div id="why_Choose_Us_Container_15-container">
+        <h1>Why Choose Us</h1>
+        <div class="why_Choose_Us_Container_15-carousel"></br>
+            <div class="why_Choose_Us_Container_15-carousel-images-wrapper"></br></br>
+                <!-- Carousel Items -->
+                <div class="why_Choose_Us_Container_15-carousel-slide">
+                    <img src="./jpeg/01.jpeg" alt="Image 1" class="why_Choose_Us_Container_15-carousel-image">
+                    <h3>Affordable rates for comfortable rides</h3>
+                    <p>Our rates are designated to be affordable</p>
+                    <p class="why_Choose_Us_Container_15-additional-text">
+                        without compromising on ride quality
+                        and comfort. Transparency is key--we
+                        communicate rates clearly, with no
+                        hidden fees. Additionally, we offer
+                        flexible fare options, including hourly
+                        rates, one-way trips, round trips and
+                        customized plans to cater to diverse
+                        budgets and preferences.
+                    </p>
+                    <button class="why_Choose_Us_Container_15-show-more">Read More</button>
+                    <button class="why_Choose_Us_Container_15-show-less">Read Less</button>
+                </div>
+                <div class="why_Choose_Us_Container_15-carousel-slide">
+                    <img src="./jpeg/02.jpeg" alt="Image 2" class="why_Choose_Us_Container_15-carousel-image">
+                    <h3>Timely and Reliable Pickup and Drop-off</h3>
+                    <p>We prioritize punctuality, with drivers</p>
+                    <p class="why_Choose_Us_Container_15-additional-text">
+                        trained to arrive ahead of time. Utilizing advanced tracking, we
+                        optimize routes for efficient pickups.
+                        Open communication ensures smooth
+                        operations and in case of delays,
+                        drivers promptly update passengers on
+                        estimated arrival times.
+                    </p>
+                    <button class="why_Choose_Us_Container_15-show-more">Read More</button>
+                    <button class="why_Choose_Us_Container_15-show-less">Read Less</button>
+                </div>
+                <div class="why_Choose_Us_Container_15-carousel-slide">
+                    <img src="./jpeg/03.jpeg" alt="Image 3" class="why_Choose_Us_Container_15-carousel-image">
+                    <h3>Convenient Online Booking Process</h3>
+                    <p>Customers enter travel details, choose a vehicle and receive instant</p>
+                    <p class="why_Choose_Us_Container_15-additional-text">
+                        confirmation, eliminating uncertainty.
+                        We prioritize safety with secure
+                        payment options and trusted,
+                        encrypted gateways. Our platform
+                        allows easy reservation management,
+                        enabling customers to modify or cancel
+                        bookings for flexibility in changing
+                        travel plans.
+                    </p>
+                    <button class="why_Choose_Us_Container_15-show-more">Read More</button>
+                    <button class="why_Choose_Us_Container_15-show-less">Read Less</button>
+                </div>
+                <div class="why_Choose_Us_Container_15-carousel-slide">
+                    <img src="./jpeg/04.jpeg" alt="Image 4" class="why_Choose_Us_Container_15-carousel-image">
+                    <h3>Wide Range of Vehicle Options</h3>
+                    <p>Our diverse fleet caters to varied transportation needs, featuring sedans,</p>
+                    <p class="why_Choose_Us_Container_15-additional-text">
+                        SUVs, luxury vehicles, vans, and
+                        specialty options. Vehicles come in
+                        different seating capacities,
+                        accommodating solo travelers to large
+                        groups for various occasions.
+                    </p>
+                    <button class="why_Choose_Us_Container_15-show-more">Read More</button>
+                    <button class="why_Choose_Us_Container_15-show-less">Read Less</button>
+                </div>
+                <div class="why_Choose_Us_Container_15-carousel-slide">
+                    <img src="./jpeg/05.jpeg" alt="Image 5" class="why_Choose_Us_Container_15-carousel-image">
+                    <h3>Professional Chauffeurs</h3>
+                    <p>Our chauffeurs undergo a stringent selection process, ensuring</p>
+                    <p class="why_Choose_Us_Container_15-additional-text">
+                        professionalism and safety. Highly
+                        trained with extensive local knowledge,
+                        they prioritize efficient and timely
+                        transportation. Continuous training
+                        focuses on defensive driving and
+                        customer service excellence. This
+                        commitment ensures they deliver a
+                        top-notch, safe and comfortable
+                        experience.
+                    </p>
+                    <button class="why_Choose_Us_Container_15-show-more">Read More</button>
+                    <button class="why_Choose_Us_Container_15-show-less">Read Less</button>
+                </div></br></br>
+            </div></br>
+            <button class="why_Choose_Us_Container_15-carousel-prev">&#10094;</button>
+            <button class="why_Choose_Us_Container_15-carousel-next">&#10095;</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const prevButton = document.querySelector('.why_Choose_Us_Container_15-carousel-prev');
+            const nextButton = document.querySelector('.why_Choose_Us_Container_15-carousel-next');
+            const slidesWrapper = document.querySelector('.why_Choose_Us_Container_15-carousel-images-wrapper');
+            const slides = document.querySelectorAll('.why_Choose_Us_Container_15-carousel-slide');
+            let index = 0;
+            let autoSlideInterval;
+
+            function updateCarousel() {
+                const offset = -index * (slides[0].offsetWidth + 20); // Adding 20px gap
+                slidesWrapper.style.transform = `translateX(${offset}px)`;
+            }
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(() => {
+                    nextButton.click();
+                }, 1000); // Change slide every 1 seconds (adjust as needed)
+            }
+
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+
+            nextButton.addEventListener('click', () => {
+                index = (index + 1) % slides.length;
+                updateCarousel();
+            });
+
+            prevButton.addEventListener('click', () => {
+                index = (index - 1 + slides.length) % slides.length;
+                updateCarousel();
+            });
+
+            // Show More/Less Functionality
+            const showMoreButtons = document.querySelectorAll('.why_Choose_Us_Container_15-show-more');
+            const showLessButtons = document.querySelectorAll('.why_Choose_Us_Container_15-show-less');
+
+            showMoreButtons.forEach((button) => {
+                button.addEventListener('click', function () {
+                    this.nextElementSibling.style.display = 'block';
+                    this.style.display = 'none';
+                    this.previousElementSibling.style.display = 'block';
+                });
+            });
+
+            showLessButtons.forEach((button) => {
+                button.addEventListener('click', function () {
+                    this.previousElementSibling.style.display = 'none';
+                    this.style.display = 'none';
+                    this.nextElementSibling.style.display = 'block';
+                });
+            });
+
+            // Mouse hover events
+            const carousel = document.querySelector('.why_Choose_Us_Container_15-carousel');
+
+            carousel.addEventListener('mouseenter', stopAutoSlide);
+            carousel.addEventListener('mouseleave', startAutoSlide);
+
+            updateCarousel(); // Initialize carousel position
+            startAutoSlide(); // Start automatic sliding
+        });
+    </script>
+    <!-- THE END why_Choose_Us_Container_15-container Carousel Container -->
+
+    </br></br>
+    <!--  -->
+    <a href="index.html" class="book-now-button">BOOK NOW</a>
+    </br></br>
+
+
+    <!-- /*START explore_Car_Rentals_Container_6 Carousel container -->
+    <div class="explore_Car_Rentals_Container_6" id="explore_Car_Rentals_Container_6">
+        <h1>Explore Car Rentals in</h1>
+        <!-- Carousel wrapper that holds all items -->
+        <div class="explore_Car_Rentals_Wrapper_6">
+            <!-- Each carousel item -->
+            <div class="explore_Car_Rentals_Item_6">
+                <img src="./jpeg/delhi.jpeg" alt="Delhi NCR">
+                <h2>Delhi NCR</h2>
+            </div>
+            <div class="explore_Car_Rentals_Item_6">
+                <img src="./jpeg/Mumbai.jpeg" alt="Mumbai">
+                <h2>Mumbai</h2>
+            </div>
+            <div class="explore_Car_Rentals_Item_6">
+                <img src="./jpeg/Pune.jpeg" alt="Pune">
+                <h2>Pune</h2>
+            </div>
+            <div class="explore_Car_Rentals_Item_6">
+                <img src="./jpeg/Hyderabad.jpeg" alt="Hyderabad">
+                <h2>Hyderabad</h2>
+            </div>
+            <div class="explore_Car_Rentals_Item_6">
+                <img src="./jpeg/Bangalore.jpeg" alt="Bangalore">
+                <h2>Bangalore</h2>
+            </div>
+            <div class="explore_Car_Rentals_Item_6">
+                <img src="./jpeg/Chennai.jpeg" alt="Chennai">
+                <h2>Chennai</h2>
+            </div>
+            <div class="explore_Car_Rentals_Item_6">
+                <img src="./jpeg/chandigarh.jpeg" alt="Chandigarh">
+                <h2>Chandigarh</h2>
+            </div>
+            <div class="explore_Car_Rentals_Item_6">
+                <img src="./jpeg/Ahmedabad.jpeg" alt="Ahmedabad">
+                <h2>Ahmedabad</h2>
+            </div>
+            <div class="explore_Car_Rentals_Item_6">
+                <img src="./jpeg/Guwahati.jpeg" alt="Guwahati">
+                <h2>Guwahati</h2>
+            </div>
+            <div class="explore_Car_Rentals_Item_6">
+                <img src="./jpeg/jaipur.jpeg" alt="Jaipur">
+                <h2>Jaipur</h2>
+            </div>
+            <div class="explore_Car_Rentals_Item_6">
+                <img src="./jpeg/Kolkata.jpeg" alt="Kolkata">
+                <h2>Kolkata</h2>
+            </div>
+        </div>
+        <!-- Previous and next buttons for carousel navigation -->
+        <button class="explore_Car_Rentals_Button_6 explore_prev_6" onclick="moveSlide(-1)">&#60;</button>
+        <button class="explore_Car_Rentals_Button_6 explore_next_6" onclick="moveSlide(1)">&#62;</button>
+    </div>
+
+    <script>
+        let currentIndex = 0; // Initialize current index for carousel position
+
+        function moveSlide(direction) {
+            const carouselWrapper = document.querySelector('.explore_Car_Rentals_Wrapper_6');
+            const totalItems = document.querySelectorAll('.explore_Car_Rentals_Item_6').length;
+            const visibleItems = 5; // Number of visible items at a time
+
+            // Update the current index based on direction
+            currentIndex += direction;
+
+            // Handle boundary conditions
+            if (currentIndex < 0) {
+                currentIndex = totalItems - visibleItems;
+            } else if (currentIndex >= totalItems - visibleItems + 1) {
+                currentIndex = 0;
+            }
+
+            // Move the carousel wrapper to show the appropriate items
+            carouselWrapper.style.transform = `translateX(-${currentIndex * (100 / visibleItems)}%)`;
+        }
+
+        // Automatically move slides every 1 seconds
+        setInterval(() => {
+            moveSlide(1);
+        }, 1000);
+    </script>
+    <!-- /* THE-END explore_Car_Rentals_Container_6 Carousel container -->
+    </br></br>
+
+    <div class="customer-support-container">
+        <div class="customer-support-item">
+            <img src="./png/247_Customer_Support.png" alt="24/7 Customer Support" class="customer-support-icon">
+            <div class="customer-support-text">
+                <h2>24/7 Customer Support</h2>
+                <p>A dedicated 24x7 customer support team always at your service to help solve any problem.</p>
+            </div>
+        </div>
+        <div class="customer-support-item">
+            <img src="./png/Safety_first.png" alt="Safety First" class="customer-support-icon">
+            <div class="customer-support-text">
+                <h2>Safety First</h2>
+                <p>Keep your loved ones informed about your travel routes or call emergency services when in need.</p>
+            </div>
+        </div>
+        <div class="customer-support-item">
+            <img src="./png/top_rates_driver.png" alt="Top Rated Driver" class="customer-support-icon">
+            <div class="customer-support-text">
+                <h2>Top Rated Driver-Partners</h2>
+                <p>All our driver-partners are background verified and trained to deliver only the best experience.</p>
+            </div>
+        </div>
+    </div>
+    </br></br>
+
+
+    <div class="Customer_fivestars-container-carousel">
+        <div class="Customer_fivestars-carousel">
+            <div class="Customer_fivestars-carousel-slide">
+                <!-- Repeat this block for each review -->
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_1.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Emily Clark</div>
+                    <div class="Customer_fivestars-grade yellow-star">★★★★★</div>
+                    <div class="Customer_fivestars-review">Fantastic service, very happy! 😊</div>
+                </div>
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_2.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Michael Lee</div>
+                    <div class="Customer_fivestars-grade gray-star">★★★★☆</div>
+                    <div class="Customer_fivestars-review">Good service, but could improve. 🙂</div>
+                </div>
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_3.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Sarah Jones</div>
+                    <div class="Customer_fivestars-grade gray-star">★★★☆☆</div>
+                    <div class="Customer_fivestars-review">Average experience. 😐</div>
+                </div>
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_1.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Emily Clark</div>
+                    <div class="Customer_fivestars-grade yellow-star">★★★★★</div>
+                    <div class="Customer_fivestars-review">Fantastic service, very happy! 😊</div>
+                </div>
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_2.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Michael Lee</div>
+                    <div class="Customer_fivestars-grade gray-star">★★★★☆</div>
+                    <div class="Customer_fivestars-review">Good service, but could improve. 🙂</div>
+                </div>
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_3.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Sarah Jones</div>
+                    <div class="Customer_fivestars-grade gray-star">★★★☆☆</div>
+                    <div class="Customer_fivestars-review">Average experience. 😐</div>
+                </div>
+
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_4.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">David Smith</div>
+                    <div class="Customer_fivestars-grade red-star">★☆☆☆☆</div>
+                    <div class="Customer_fivestars-review">Not satisfied with the service. 😟</div>
+                </div>
+                <div class="Customer_fivestars-item">
+                    <img src="./jpeg/customer_feedback_5.jpeg" alt="Customer Image">
+                    <img src="./jpeg/google_logo_G2.jpeg" alt="Google Logo" class="Customer_fivestars-logo">
+                    <div class="Customer_fivestars-name">Laura Wilson</div>
+                    <div class="Customer_fivestars-grade yellow-star">★★★★★</div>
+                    <div class="Customer_fivestars-review">Excellent service, will use again! 😃</div>
+                </div>
+                <!-- Add more Customer_fivestars items as needed -->
+            </div>
+            <button class="Customer_fivestars-carousel-button Customer_fivestars-prev">&lt;</button>
+            <button class="Customer_fivestars-carousel-button Customer_fivestars-next">&gt;</button>
+        </div>
+    </div>
+
+    <script>
+        const prevButton = document.querySelector('.Customer_fivestars-prev');
+        const nextButton = document.querySelector('.Customer_fivestars-next');
+        const slide = document.querySelector('.Customer_fivestars-carousel-slide');
+        let index = 0;
+
+        function showNextSlide() {
+            index++;
+            if (index >= slide.children.length - 2) { // Adjusted for 3 items view
+                index = 0;
+            }
+            updateSlidePosition();
+        }
+
+        function showPrevSlide() {
+            index--;
+            if (index < 0) {
+                index = slide.children.length - 3; // Adjusted for 3 items view
+            }
+            updateSlidePosition();
+        }
+
+        function updateSlidePosition() {
+            const width = slide.children[0].getBoundingClientRect().width;
+            slide.style.transform = `translateX(-${index * (width + 20)}px)`; // Adjusted for 20px margin
+        }
+
+        prevButton.addEventListener('click', showPrevSlide);
+        nextButton.addEventListener('click', showNextSlide);
+
+        setInterval(showNextSlide, 5000); // Change slide every 5 seconds
+    </script>
+    </br></br>
+
+
+    <div class="download_App_Container">
+        <a href="https://play.google.com/store/apps/details?id=com.wti.cabbooking" alt="Google Play"
+            class="store-icon">DOWNLOAD APP</a>
+    </div>
+    </br></br>
+
+    <div class="workplace_Commute">
+        <div>
+            <h1>WORKPLACE COMMUTE</h1>
+            <h2>Need wheels for employees?</h2>
+            <p>Enjoy business rentals, employee transportation service,<br>
+                and other office commute services as a business user. Kick<br>
+                back, relax, and ride.</p>
+            <button class="learnMoreButton">
+                Learn More <span>&#x27A4;</span>
+            </button>
+        </div>
+        <div>
+            <img src="./jpeg/WORKPLACE COMMUTE.jpeg" alt="Workplace Commute" class="responsiveImage">
+        </div>
+    </div>
+    </br></br>
+
+
+    <div class="contact_Us_to_know_more_Container">
+        <a href="https://www.wticabs.com/contact-us" alt="Google Play" class="store-icon">
+            CONTACT US TO KNOW MORE
+        </a>
+    </div>
+    <br><br>
+
+    <div id="blogCarouselContainer">
+        <h1 style="text-align: center;">Blogs</h1>
+
+        <div id="blogsCarouselWrapper">
+            <div class="blogsCarouselImagesWrapper">
+                <!-- Carousel Items -->
+                <div class="blogsCarouselSlide">
+                    <img src="./jpeg/BLOGS_Railway-Transfer.jpeg" alt="Image 1" class="carouselImage">
+                    <h3>ADVANCING YOUR JOURNEY ON TRACKS:</br> WTICABS RAILWAY TRANSFER</br> </h3>
+                    <p class="additionalText">
+                        WTicabs have been a pioneer in revolutionizing </br> the transport industry, for a decade.
+                        The Largest </br> Fastest growing transportation</br> company, WTicabs keeps innovating</br>
+                    </p>
+                    <button class="showMore"><a
+                            href="https://www.wticabs.com/blog/five-places-to-visit-in-delhi-with-a-cab-service">Read
+                            More</a></button>
+                    <button class="showLess">Read Less</button>
+                </div>
+                <div class="blogsCarouselSlide">
+                    <img src="./jpeg/BLOGS_How_to_book_a_car.jpeg" alt="Image 2" class="carouselImage">
+                    <h3>HOW TO BOOK A CAR RENTAL FROM WTICABS </br>VIA THE WEBSITE?</br></h3>
+                    <p class="additionalText">
+                        Need a car to rent when visiting your hometown </br> or attending a business conference in a
+                        new city?</br> Car renting services help make these trips smooth</br> and stress-free.</br>
+                    </p>
+                    <button class="showMore"><a
+                            href="https://www.wticabs.com/blog/how-to-book-a-car-rental-from-WTi-cabs-via-the-website">Read
+                            More</a></button>
+                    <button class="showLess">Read Less</button>
+                </div>
+                <div class="blogsCarouselSlide">
+                    <img src="./jpeg/BLOGS_CAR_IMAGE.jpeg" alt="Image 3" class="carouselImage">
+                    <h3>HOW TO BOOK A CAR RENTAL FROM WTICABS</br> FROM THE APP?</h3>
+                    <p class="additionalText">
+                        Need a car for rent in Noida, Delhi or Gurgaon?</br> Of course, you do! To fulfill the need
+                        of booking a </br> cab for Corporate Travel or recreational weekend </br> travel,</br>
+                    </p>
+                    <button class="showMore"><a href="https://www.wticabs.com/blog/the-return-of-the-commute">Read
+                            More</a></button>
+                    <button class="showLess">Read Less</button>
+                </div>
+                <div class="blogsCarouselSlide">
+                    <img src="./jpeg/BLOG_5_places.jpeg" alt="Image 4" class="carouselImage">
+                    <h3>5 PLACES TO VISIT IN DELHI WITH A CAB </br> SERVICE</br></h3>
+                    <p class="additionalText">
+                        Delhi, the country's capital city, is a heritage</br> hotspot with monuments and cultural
+                        sites. The </br> city skyline is rich with monuments from the </br> Mughal dynasty</br>
+                    </p>
+                    <button class="showMore"><a
+                            href="https://www.wticabs.com/blog/five-places-to-visit-in-delhi-with-a-cab-service">Read
+                            More</a></button>
+                    <button class="showLess">Read Less</button>
+                </div>
+                <div class="blogsCarouselSlide">
+                    <img src="./jpeg/BLOG_STEARING.jpeg" alt="Image 5" class="carouselImage">
+                    <h3>FIVE WAYS TO GET THE BEST CAR ON RENTAL</br></h3>
+                    <p class="additionalText">
+                        Have you returned from a road trip with no good</br> memories because of lousy car rental
+                        service?</br> Started thinking about your Manali trip? Trust us, </br> everyone has had a
+                        trip like that. While renting a </br> car, it's common to start your trip excited</br>
+                    </p>
+                    <button class="showMore"><a
+                            href="https://www.wticabs.com/blog/five-ways-to-get-the-best-car-on-rental">Read
+                            More</a></button>
+                    <button class="showLess">Read Less</button>
+                </div>
+                <div class="blogsCarouselSlide">
+                    <img src="./jpeg/BLOG_RED_FIGHT.jpeg" alt="Image 6" class="carouselImage">
+                    <h3>HOW READY ARE WE TO FIGHT COVID'S </br> OMICRON VARIANT</br></h3>
+                    <p class="additionalText">
+                        Ever since the pandemic outbreak, we have</br> become extra conscious and cautious about our
+                        </br> health and well-being. Sanitization, hand wash, </br> hygiene</br>
+                    </p>
+                    <button class="showMore"><a
+                            href="https://www.wticabs.com/blog/how-ready-are-we-to-fight-covid-omicron-variant">Read
+                            More</a></button>
+                    <button class="showLess">Read Less</button>
+                </div>
+                <div class="blogsCarouselSlide">
+                    <img src="./jpeg/BLOG_BACK_DOOR.jpeg" alt="Image 7" class="carouselImage">
+                    <h3>WHY YOU SHOULD RENT A CAR</br></h3>
+                    <p class="additionalText">
+                        Renting a car - this phrase instills a sense of </br> hesitancy and draws a series of
+                        questions </br> regarding its expenses, services, functioning </br> safety and what not! But
+                        what remains oblivious </br> is the fact</br>
+                    </p>
+                    <button class="showMore"><a href="https://www.wticabs.com/blog/why-you-should-rent-a-car">Read
+                            More</a></button>
+                    <button class="showLess">Read Less</button>
+                </div>
+            </div>
+            <button class="carouselPrev" onclick="prevSlide()">&#10094;</button>
+            <button class="carouselNext" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+
+    <script>
+        let index9 = 0;
+        let autoSlideInterval;
+
+        function showSlides() {
+            const slides = document.querySelectorAll('.blogsCarouselSlide');
+            const totalSlides = slides.length;
+            const slideWidth = slides[0].offsetWidth;
+
+            if (index >= totalSlides) {
+                index = 0;
+            } else if (index < 0) {
+                index = totalSlides - 1;
+            }
+
+            const offset = -index * slideWidth;
+            document.querySelector('.blogsCarouselImagesWrapper').style.transform = `translateX(${offset}px)`;
+        }
+
+        function nextSlide() {
+            index++;
+            showSlides();
+        }
+
+        function prevSlide() {
+            index--;
+            showSlides();
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 2000); // Auto-slide every 5 seconds
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        document.querySelectorAll('.showMore').forEach(button => {
+            button.addEventListener('click', function () {
+                this.nextElementSibling.classList.add('expanded');
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'inline';
+            });
+        });
+
+        document.querySelectorAll('.showLess').forEach(button => {
+            button.addEventListener('click', function () {
+                this.classList.remove('expanded');
+                this.previousElementSibling.style.display = 'inline';
+                this.style.display = 'none';
+            });
+        });
+
+        const carousel = document.getElementById('blogsCarouselWrapper');
+        carousel.addEventListener('mouseover', stopAutoSlide);
+        carousel.addEventListener('mouseout', startAutoSlide);
+
+        showSlides(); // Initial call to display the first slide
+        startAutoSlide(); // Start automatic sliding
+    </script>
+    <br><br>
+
+
+    <div class="faqs_Container">
+        <h1>FAQ's</h1>
+    </div>
+    <br><br>
+
+
+
+    <div class="last_Down_Image_Container_14_mainContainer">
+        <div class="last_Down_Image_Container_14_container">
+            <h1 style="text-align: center;">Book WTicabs from the App</h1>
+            <p style="text-align: center;">Download the app for exclusive deals and ease of booking</p>
+            <div class="last_Down_Image_Container_14_appIcons">
+                <img src="google_play.png" alt="Google Play" class="last_Down_Image_Container_14_storeIcon">
+                <img src="app_store.png" alt="App Store" class="last_Down_Image_Container_14_storeIcon">
+            </div>
+        </div>
+        <div class="last_Down_Image_Container_14_imageContainer">
+            <img src="./JPEG/last_image.jpeg" alt="Image">
+        </div>
+    </div>
+
+    <br><br>
+
+
+    <div class="footer_Container_21">
+        <h2>TOP CAR RENTAL CITIES</h2>
+        </br>
+        <div class="links">
+            <a href="#">DELHI NCR</a>
+            <a href="#">MUMBAI</a>
+            <a href="#">PUNE</a>
+            <a href="#">BANGALORE</a>
+            <a href="#">HYDERABAD</a>
+            <a href="#">CHENNAI</a>
+            <a href="#">JAIPUR</a>
+            <a href="#">CHANDIGARH</a>
+            <a href="#">AHMEDABAD</a>
+            <a href="#">Explore More...</a>
+        </div>
+        <hr>
+        <div class="services">
+            <div class="service-group">
+                <label>AIRPORT</br> CABS</label>
+                <a href="#">Airport Cabs in Delhi</a>
+                <a href="#">Airport Cabs in Mumbai</a>
+                <a href="#">Airport Cabs in Bangalore</a>
+                <a href="#">Airport Cabs in Pune</a>
+                <a href="#">Airport Cabs in Hyderabad</a>
+                <a href="#">Airport Cabs in Chennai</a>
+                <a href="#">Airport Cabs in Ayodhya</a>
+                <a href="#">Explore More...</a>
+            </div>
+            <div class="service-group">
+                <label>RAILWAY STATION CABS</label>
+                <a href="#">Railway Station Cabs in Delhi</a>
+                <a href="#">Railway Station Cabs in Mumbai</a>
+                <a href="#">Railway Station Cabs in Bangalore</a>
+                <a href="#">Railway Station Cabs in Pune</a>
+                <a href="#">Railway Station Cabs in Hyderabad</a>
+                <a href="#">Railway Station Cabs in Chennai</a>
+                <a href="#">Railway Station Cabs in Ayodhya</a>
+                <a href="#">Explore More...</a>
+            </div>
+            <div class="service-group">
+                <label>OUTSTATION</br> CABS</label>
+                <a href="#">Outstation Cabs in Delhi</a>
+                <a href="#">Outstation Cabs in Mumbai</a>
+                <a href="#">Outstation Cabs in Bangalore</a>
+                <a href="#">Outstation Cabs in Pune</a>
+                <a href="#">Outstation Cabs in Hyderabad</a>
+                <a href="#">Outstation Cabs in Chennai</a>
+                <a href="#">Outstation Cabs in Ayodhya</a>
+                <a href="#">Explore More...</a>
+            </div>
+            <div class="service-group">
+                <label>CORPORATE</br> CABS</label>
+                <a href="#">Corporate Cabs in Delhi</a>
+                <a href="#">Corporate Cabs in Mumbai</a>
+                <a href="#">Corporate Cabs in Bangalore</a>
+                <a href="#">Corporate Cabs in Pune</a>
+                <a href="#">Corporate Cabs in Hyderabad</a>
+                <a href="#">Corporate Cabs in Chennai</a>
+                <a href="#">Corporate Cabs in Ayodhya</a>
+                <a href="#">Explore More...</a>
+            </div>
+        </div>
+        <hr>
+        <label>FOLLOW US ON SOCIAL MEDIA</label>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/login/?next=https%3A%2F%2Fwww.facebook.com%2F" target="_blank"><img
+                    src="./png/facebook.png" alt="Facebook"></a>
+            <a href="https://x.com/settings/download" target="_blank"><img src="./png/x.png" alt="X"></a>
+            <a href="https://in.linkedin.com/" target="_blank"><img src="./png/linkedin.png" alt="LinkedIn"></a>
+            <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><img src="./png/instagram.png"
+                    alt="Instagram"></a>
+            <a href="https://www.youtube.com/" target="_blank"><img src="./png/youtube.png" alt="YouTube"></a>
+        </div>
+        <hr>
+        <label>DISCOVER WTicabs</label></br>
+        <div class="links">
+            <a href="#">Book Cab</a>
+            <a href="#">Download App</a>
+            <a href="#">Contact Us</a>
+            <a href="#">About WTicabs</a>
+            <a href="#">Corporate</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms Of Use</a>
+            <a href="#">Cookie Notice</a>
+            <a href="#">Newsletter</a>
+            <a href="#">Blogs</a>
+            <a href="#">News</a>
+            <a href="#">Support</a>
+            <a href="#">Join as a Vendor</a>
+            <a href="#">Careers</a>
+            <a href="#">Investor Corner</a>
+            <a href="#">Case Studies</a>
+        </div>
+        <hr>
+        <p class="copyright">(C) All Copyrights by MAHESHWER_CHOWDEYKARI EDUREKA LEARNING CENTER NIZAMABAD. All rights
+            reserved.</p>
+    </div>
+    </br></br>
+</body>
+
+</html>

@@ -1077,8 +1077,7 @@
         }
 
 
-
-        /*START explore_Car_Rentals_Container_6 Apply box-sizing to all elements for consistent layout */
+        /* Apply box-sizing to all elements for consistent layout */
         * {
             box-sizing: border-box;
         }
@@ -1132,6 +1131,8 @@
             /* Fixed height for images */
             border: 2px solid blue;
             /* Blue border around images */
+            border-radius: 10px;
+            /* Rounded corners for images */
         }
 
         /* Styling for the heading inside each carousel item */
@@ -1174,7 +1175,30 @@
             /* 10px from the right edge */
         }
 
-        /* THE END explore_Car_Rentals_Container_6 Apply box-sizing to all elements for consistent layout */
+        /* Responsive design adjustments */
+        @media (max-width: 1200px) {
+            .explore_Car_Rentals_Item_6 {
+                min-width: 25%;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .explore_Car_Rentals_Item_6 {
+                min-width: 33.33%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .explore_Car_Rentals_Item_6 {
+                min-width: 50%;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .explore_Car_Rentals_Item_6 {
+                min-width: 100%;
+            }
+        }
 
 
         .customer-support-container {
@@ -2525,8 +2549,8 @@
     </br></br>
 
 
-    <!-- /*START explore_Car_Rentals_Container_6 Carousel container -->
-    <div class="explore_Car_Rentals_Container_6" id="explore_Car_Rentals_Container_6">
+     <!-- /*START explore_Car_Rentals_Container_6 Carousel container -->
+     <div class="explore_Car_Rentals_Container_6" id="explore_Car_Rentals_Container_6">
         <h1>Explore Car Rentals in</h1>
         <!-- Carousel wrapper that holds all items -->
         <div class="explore_Car_Rentals_Wrapper_6">
@@ -2609,7 +2633,7 @@
         }, 1000);
     </script>
     <!-- /* THE-END explore_Car_Rentals_Container_6 Carousel container -->
-    </br></br>
+</br></br>
 
     <div class="customer-support-container">
         <div class="customer-support-item">
